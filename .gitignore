@@ -13,8 +13,6 @@ dist-ssr
 *.local
 *.zip
 PRD_포트폴리오*.md
-src/assets/
-dist/
 
 # Editor directories and files
 .vscode/*
