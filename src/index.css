@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+a {
+  overflow-wrap: break-word;
+}
+
+p,
+li,
+dd,
+h1,
+h2,
+h3,
+span,
+button,
+a {
+  word-break: keep-all;
+}
