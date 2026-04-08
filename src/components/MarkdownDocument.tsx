@@ -198,7 +198,16 @@ function parseMarkdown(markdown: string) {
 
         if (!currentTrimmed) {
           index += 1
-          if (getListMatch(lines[index] ?? '')) continue
+          const nextLine = lines[index] ?? ''
+          const nextTrimmed = nextLine.trim()
+          const nextIsBoundary =
+            getImageMatch(nextLine) ||
+            nextTrimmed.startsWith('#') ||
+            nextTrimmed.startsWith('|') ||
+            nextTrimmed.startsWith('>') ||
+            nextTrimmed === '---'
+
+          if (nextTrimmed && !nextIsBoundary) continue
           break
         }
 

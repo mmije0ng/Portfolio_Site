@@ -42,15 +42,15 @@ export function ResearchPage({ onNavigate }: ResearchPageProps) {
             </Tabs.Trigger>
           </Tabs.List>
           <Tabs.Content className="mt-6 grid gap-4 md:grid-cols-2" value="papers">
-            {papers.map((paper) => (
-              <ProjectCard key={paper.title} onOpen={(item) => onNavigate(`/research/${item.slug}`)} project={paper} />
+            {papers.map((paper, index) => (
+              <ProjectCard key={paper.title} number={index + 1} onOpen={(item) => onNavigate(`/research/${item.slug}`)} project={paper} />
             ))}
           </Tabs.Content>
           <Tabs.Content className="mt-6 grid gap-4 md:grid-cols-2" value="security">
             {papers
               .filter((paper) => paper.stack.some((item) => item.toLowerCase().includes('security')))
-              .map((paper) => (
-                <ProjectCard key={paper.title} onOpen={(item) => onNavigate(`/research/${item.slug}`)} project={paper} />
+              .map((paper, index) => (
+                <ProjectCard key={paper.title} number={index + 1} onOpen={(item) => onNavigate(`/research/${item.slug}`)} project={paper} />
               ))}
           </Tabs.Content>
         </Tabs.Root>

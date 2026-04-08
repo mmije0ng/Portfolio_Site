@@ -10,6 +10,7 @@ import type { Project } from '../types/portfolio'
 type ProjectCardProps = {
   project: Project
   featured?: boolean
+  number?: number
   onOpen?: (project: Project) => void
 }
 
@@ -31,7 +32,7 @@ function renderProjectIcon(category?: string) {
   return <Code2 className="h-6 w-6" />
 }
 
-export function ProjectCard({ project, featured = false, onOpen }: ProjectCardProps) {
+export function ProjectCard({ project, featured = false, number, onOpen }: ProjectCardProps) {
   const categoryClass = categoryStyles[project.category as keyof typeof categoryStyles] ?? categoryStyles.Backend
   const thumbnail = getWorkThumbnail(project.slug)
   const isClickable = Boolean(onOpen && project.slug)
@@ -88,7 +89,10 @@ export function ProjectCard({ project, featured = false, onOpen }: ProjectCardPr
             </div>
             <span>{project.type ?? project.category ?? 'Project'}</span>
           </div>
-          <h3 className="mt-5 min-w-0 text-2xl font-semibold tracking-tight text-white [overflow-wrap:break-word]">{project.title}</h3>
+          <h3 className="mt-5 min-w-0 text-2xl font-semibold tracking-tight text-white [overflow-wrap:break-word]">
+            {number ? `${number}. ` : ''}
+            {project.title}
+          </h3>
           <p className="mt-4 min-w-0 text-sm leading-7 text-slate-400 [overflow-wrap:break-word]">{project.description}</p>
           <p className="mt-5 rounded-lg bg-slate-950 p-4 text-sm font-medium leading-6 text-slate-300">
             {project.impact}
@@ -123,6 +127,7 @@ export function ProjectsSection({ onNavigate }: ProjectsSectionProps) {
           <ProjectCard
             featured={index === 0}
             key={project.title}
+            number={index + 1}
             onOpen={(item) => onNavigate(papers.some((paper) => paper.slug === item.slug) ? `/research/${item.slug}` : `/projects/${item.slug}`)}
             project={project}
           />

@@ -69,6 +69,7 @@ export function ProjectsPage({ onNavigate }: ProjectsPageProps) {
                   <ProjectCard
                     featured={index === 0 && tab.value === 'all'}
                     key={project.title}
+                    number={index + 1}
                     onOpen={(item) => onNavigate(`/projects/${item.slug}`)}
                     project={project}
                   />

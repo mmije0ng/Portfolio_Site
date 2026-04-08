@@ -63,8 +63,13 @@ export function ExperienceSection({ onNavigate }: ExperienceSectionProps) {
               key={experience.title}
             >
               <div className="flex items-start gap-4">
-                  <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg ${accentClass}`}>
-                  <Icon className="h-6 w-6" />
+                <div className="flex shrink-0 flex-col items-center gap-2">
+                  <span className="text-xs font-black tracking-[0.18em] text-slate-500">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div className={`flex h-12 w-12 items-center justify-center rounded-lg ${accentClass}`}>
+                    <Icon className="h-6 w-6" />
+                  </div>
                 </div>
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
