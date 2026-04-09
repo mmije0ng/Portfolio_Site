@@ -64,7 +64,7 @@ export function ProjectCard({ project, featured = false, number, onOpen }: Proje
   return (
     <article
       className={cn(
-        'group min-w-0 overflow-hidden rounded-lg border border-slate-800 bg-slate-900 transition hover:-translate-y-1 hover:border-slate-700',
+        'group min-w-0 overflow-hidden rounded-lg border border-slate-800 bg-slate-900 transition hover:border-slate-700 hover:shadow-[0_18px_40px_rgba(15,23,42,0.28)]',
         isClickable && 'cursor-pointer',
         featured && 'md:col-span-2',
       )}
@@ -87,7 +87,7 @@ export function ProjectCard({ project, featured = false, number, onOpen }: Proje
           {thumbnail ? (
             <img
               alt={`${project.title} thumbnail`}
-              className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+              className="absolute -inset-1 block h-[calc(100%+0.5rem)] w-[calc(100%+0.5rem)] object-cover transition duration-500 ease-out group-hover:scale-[1.03] group-hover:brightness-110"
               loading="lazy"
               src={thumbnail}
             />
