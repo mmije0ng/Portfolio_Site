@@ -3,6 +3,7 @@ import { ArrowLeft, FolderKanban } from 'lucide-react'
 import { projects } from '../data/projects'
 import { cn } from '../lib/cn'
 import { ProjectCard } from '../sections/ProjectsSection'
+import type { Project } from '../types/portfolio'
 
 type ProjectsPageProps = {
   onNavigate: (path: string) => void
@@ -11,13 +12,19 @@ type ProjectsPageProps = {
 const projectTabs = [
   { label: 'All', value: 'all' },
   { label: 'Backend', value: 'Backend' },
-  { label: 'Security', value: 'Security' },
-  { label: 'Research', value: 'Research' },
-  { label: 'AI', value: 'AI' },
-  { label: 'Mobile', value: 'Mobile' },
+  { label: 'FullStack', value: 'FullStack' },
   { label: 'Frontend', value: 'Frontend' },
+  { label: 'Cloud', value: 'Cloud' },
+  { label: 'Mobile', value: 'Mobile' },
+  { label: 'Security', value: 'Security' },
+  { label: 'AI', value: 'AI' },
   { label: 'Data', value: 'Data' },
 ]
+
+function getProjectCategories(project: Project) {
+  if (!project.category) return []
+  return Array.isArray(project.category) ? project.category : [project.category]
+}
 
 export function ProjectsPage({ onNavigate }: ProjectsPageProps) {
   return (
@@ -29,7 +36,7 @@ export function ProjectsPage({ onNavigate }: ProjectsPageProps) {
           type="button"
         >
           <ArrowLeft className="h-4 w-4" />
-          홈으로 돌아가기
+          뒤로 돌아가기
         </button>
         <div className="grid gap-6 rounded-lg border border-slate-800 bg-slate-900 p-6 md:grid-cols-[1fr_220px] md:items-center">
           <div>
@@ -39,7 +46,9 @@ export function ProjectsPage({ onNavigate }: ProjectsPageProps) {
             </p>
             <h1 className="mt-3 text-4xl font-bold tracking-tight text-white sm:text-5xl">프로젝트 목록</h1>
             <p className="mt-5 max-w-3xl text-base leading-8 text-slate-400">
-              PRD에 포함된 주요 프로젝트를 카테고리별로 탐색할 수 있게 정리했습니다.
+              주요 프로젝트를 중심으로 구성했습니다.
+              <br />
+              각 프로젝트 카드를 클릭하면 개요, 구현 기여, 문제 해결 과정을 확인할 수 있습니다.
             </p>
           </div>
           <div className="rounded-lg bg-slate-950 p-5 text-white">
@@ -61,7 +70,8 @@ export function ProjectsPage({ onNavigate }: ProjectsPageProps) {
             ))}
           </Tabs.List>
           {projectTabs.map((tab) => {
-            const filteredProjects = tab.value === 'all' ? projects : projects.filter((project) => project.category === tab.value)
+            const filteredProjects =
+              tab.value === 'all' ? projects : projects.filter((project) => getProjectCategories(project).includes(tab.value))
 
             return (
               <Tabs.Content className={cn('mt-6 grid gap-4 md:grid-cols-2')} key={tab.value} value={tab.value}>

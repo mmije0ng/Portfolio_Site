@@ -17,7 +17,7 @@ export function ResearchPage({ onNavigate }: ResearchPageProps) {
           type="button"
         >
           <ArrowLeft className="h-4 w-4" />
-          홈으로 돌아가기
+          뒤로 돌아가기
         </button>
         <div className="rounded-lg border border-slate-800 bg-slate-900 p-6">
           <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.24em] text-teal-300">
@@ -26,7 +26,9 @@ export function ResearchPage({ onNavigate }: ResearchPageProps) {
           </p>
           <h1 className="mt-3 text-4xl font-bold tracking-tight text-white sm:text-5xl">논문 목록</h1>
           <p className="mt-5 max-w-3xl text-base leading-8 text-slate-400">
-            한국자동차공학회 사이버보안 세션에 투고한 모빌리티 보안 연구를 주제별로 정리했습니다.
+            투고 논문을 중심으로 구성했습니다.
+            <br />
+            각 논문 카드를 클릭하면 연구 배경, 목표, 실험 결과를 확인할 수 있습니다.
           </p>
         </div>
 

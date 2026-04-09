@@ -41,11 +41,11 @@ iOS: https://github.com/mmije0ng/FindCrime-iOS
 
 ---
 
-**1. Full-Stack 개발**
+### **1. Full-Stack 개발**
 
 - SwiftUI 기반 iOS 앱과 Spring Boot 기반 백엔드 서버를 독립적으로 설계 및 구축
 
-**2. OAuth2.0 기반 카카오 소셜 로그인**
+### **2. OAuth2.0 기반 카카오 소셜 로그인**
 
 ![image.png](image%2031.png)
 
@@ -53,7 +53,7 @@ iOS: https://github.com/mmije0ng/FindCrime-iOS
 
 - 카카오 OAuth 2.0 기반 소셜 로그인 기능을 구현하고, JWT를 활용한 사용자 인증·인가 프로세스 구축
 
-**3. 공공데이터 기반 범죄 통계 조회**
+### **3. 공공데이터 기반 범죄 통계 조회**
 
 - 공공데이터는 지역, 범죄 대분류, 범죄 중분류를 기준으로 조회할 수 있습니다.
 - 조회 조건이 '전국 전체'일 경우, 범죄 종류별 데이터를 전국 단위로 합산하여 제공하며,
@@ -67,7 +67,7 @@ iOS: https://github.com/mmije0ng/FindCrime-iOS
 
 ![image.png](image%2036.png)
 
-**4. 주변 경찰서 찾기**
+### **4. 주변 경찰서 찾기**
 
 ![image.png](image%2037.png)
 
@@ -75,7 +75,7 @@ iOS: https://github.com/mmije0ng/FindCrime-iOS
 
 - 카카오맵의 키워드 기반 장소 검색 라이브러리를 활용하여, 지도를 통해 사용자 주변의 경찰서 위치 정보를 확인할 수 있습니다.
 
-**5. 지역 사건 제보**
+### **5. 지역 사건 제보**
 
 ![image.png](image%2039.png)
 
@@ -236,17 +236,16 @@ if (buffer.size() >= BATCH_SIZE) {
 
 ### 1-6) 개선 코드
 
-- **특징**
-    - **사전 로드 & 캐시**:
+- **사전 로드 & 캐시**:
         - 모든 Area, Crime, CrimeArea, CrimeAreaStatistic를 미리 Map에 적재.
         - CSV 처리 중 DB 조회 없음 (Map lookup만 수행).
-    - **배치 버퍼**:
+- **배치 버퍼**:
         - 일정량(BATCH_SIZE=1000) 단위로 모아서 saveAll(buffer) 실행.
         - 이후 em.flush() + em.clear()로 1차 캐시 초기화 → 메모리 부하 방지.
-    - **업데이트/삽입(upsert)도 메모리에서 처리**:
+- **업데이트/삽입(upsert)도 메모리에서 처리**:
         - statByCrimeAreaId 맵을 기준으로 존재하면 update, 없으면 새 엔티티 추가.
         - 마지막에 버퍼 플러시.
-    - **합산 단계도 캐시 기반**:
+- **합산 단계도 캐시 기반**:
         - statByCrimeAreaId와 crimeAreaByKey Map을 이용해 in-memory 합산.
         - findAllByCrimeYear(year)를 중복 호출하지 않고 최초 로드 데이터 재활용.
 - **장점**
@@ -271,6 +270,7 @@ if (buffer.size() >= BATCH_SIZE) {
 
 - GitHub (SpringBoot): [https://github.com/mmije0ng/FindCrime-SpringBoot](https://github.com/mmije0ng/FindCrime-SpringBoot)
 - GitHub (iOS): [https://github.com/mmije0ng/FindCrime-iOS](https://github.com/mmije0ng/FindCrime-iOS)
+
 
 관련 자료
 

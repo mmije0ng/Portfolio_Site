@@ -2,7 +2,7 @@ import { ArrowLeft, ArrowUpRight, CalendarDays, Code2, Sparkles, UserRound } fro
 import { MarkdownDocument } from '../components/MarkdownDocument'
 import { PillList } from '../components/PillList'
 import { ProjectMetadataPanel } from '../components/ProjectMetadataPanel'
-import { getWorkMarkdown } from '../lib/projectAssets'
+import { getWorkDocumentPath, getWorkMarkdown } from '../lib/projectAssets'
 import type { Project } from '../types/portfolio'
 
 type WorkDetailPageProps = {
@@ -16,6 +16,8 @@ type WorkDetailPageProps = {
 export function WorkDetailPage({ item, eyebrow, backLabel, backPath, onNavigate }: WorkDetailPageProps) {
   const links = item.links ?? (item.link ? [item.link] : [])
   const projectDocument = getWorkMarkdown(item.slug)
+  const documentPath = getWorkDocumentPath(item.slug)
+  const categoryLabel = Array.isArray(item.category) ? item.category.join(' / ') : item.category
 
   if (projectDocument) {
     return (
@@ -33,7 +35,7 @@ export function WorkDetailPage({ item, eyebrow, backLabel, backPath, onNavigate 
           <ProjectMetadataPanel markdown={projectDocument} />
 
           <article className="rounded-lg border border-slate-800 bg-slate-900 p-6 sm:p-8">
-            <MarkdownDocument markdown={projectDocument} skipMetadata />
+            <MarkdownDocument assetBasePath={documentPath} markdown={projectDocument} skipMetadata />
           </article>
         </section>
       </main>
@@ -71,7 +73,7 @@ export function WorkDetailPage({ item, eyebrow, backLabel, backPath, onNavigate 
                       <Code2 className="h-4 w-4" />
                       Category
                     </dt>
-                    <dd className="mt-1 text-white">{item.category}</dd>
+                    <dd className="mt-1 text-white">{categoryLabel}</dd>
                   </div>
                 ) : null}
                 {item.type ? (

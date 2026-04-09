@@ -5,6 +5,7 @@ import { resolveProjectAsset } from '../lib/projectAssets'
 type MarkdownDocumentProps = {
   markdown: string
   skipMetadata?: boolean
+  assetBasePath?: string
 }
 
 type TextBlock = {
@@ -35,6 +36,12 @@ type ImageBlock = {
   src: string
 }
 
+type CodeBlock = {
+  type: 'code'
+  language?: string
+  code: string
+}
+
 type TableBlock = {
   type: 'table'
   rows: string[][]
@@ -44,7 +51,7 @@ type RuleBlock = {
   type: 'rule'
 }
 
-type Block = TextBlock | HeadingBlock | ListBlock | ImageBlock | TableBlock | RuleBlock
+type Block = TextBlock | HeadingBlock | ListBlock | ImageBlock | CodeBlock | TableBlock | RuleBlock
 
 function cleanInline(text: string) {
   return text
@@ -57,11 +64,11 @@ function cleanInline(text: string) {
     .trim()
 }
 
-function resolveLinkHref(href: string) {
-  return /^https?:\/\//.test(href) ? href : resolveProjectAsset(href)
+function resolveLinkHref(href: string, assetBasePath?: string) {
+  return /^https?:\/\//.test(href) ? href : resolveProjectAsset(href, assetBasePath)
 }
 
-function renderInline(text: string) {
+function renderInline(text: string, assetBasePath?: string) {
   const nodes: ReactNode[] = []
   const linkPattern = /\[([^\]]+)]\(([^)]+)\)|(https?:\/\/[^\s]+)/g
   let lastIndex = 0
@@ -73,7 +80,7 @@ function renderInline(text: string) {
     }
 
     const label = match[1] ?? match[3]
-    const href = resolveLinkHref(match[2] ?? match[3])
+    const href = resolveLinkHref(match[2] ?? match[3], assetBasePath)
 
     nodes.push(
       <a
@@ -128,7 +135,7 @@ function stripMetadata(markdown: string) {
   return lines.slice(firstImageIndex).join('\n')
 }
 
-function parseMarkdown(markdown: string) {
+function parseMarkdown(markdown: string, assetBasePath?: string) {
   const lines = markdown.replace(/\r\n/g, '\n').split('\n')
   const blocks: Block[] = []
   let index = 0
@@ -149,6 +156,28 @@ function parseMarkdown(markdown: string) {
       continue
     }
 
+    const codeFenceMatch = trimmed.match(/^```([\w-]+)?\s*$/)
+    if (codeFenceMatch) {
+      const language = codeFenceMatch[1]
+      const codeLines: string[] = []
+      index += 1
+
+      while (index < lines.length && !lines[index].trim().startsWith('```')) {
+        codeLines.push(lines[index])
+        index += 1
+      }
+
+      if (index < lines.length) index += 1
+
+      blocks.push({
+        type: 'code',
+        language,
+        code: codeLines.join('\n').replace(/\s+$/, ''),
+      })
+      previousImageAlt = ''
+      continue
+    }
+
     const headingMatch = trimmed.match(/^(#{1,4})\s+(.+)$/)
     if (headingMatch) {
       blocks.push({ type: 'heading', level: headingMatch[1].length, text: cleanInline(headingMatch[2]) })
@@ -165,7 +194,7 @@ function parseMarkdown(markdown: string) {
     const imageMatch = getImageMatch(line)
     if (imageMatch) {
       const alt = cleanInline(imageMatch[1])
-      blocks.push({ type: 'image', alt, src: resolveProjectAsset(imageMatch[2]) })
+      blocks.push({ type: 'image', alt, src: resolveProjectAsset(imageMatch[2], assetBasePath) })
       previousImageAlt = alt
       index += 1
       continue
@@ -300,8 +329,8 @@ function parseMarkdown(markdown: string) {
   return blocks.filter((block) => block.type !== 'paragraph' || block.text)
 }
 
-export function MarkdownDocument({ markdown, skipMetadata = false }: MarkdownDocumentProps) {
-  const blocks = parseMarkdown(skipMetadata ? stripMetadata(markdown) : markdown)
+export function MarkdownDocument({ markdown, skipMetadata = false, assetBasePath }: MarkdownDocumentProps) {
+  const blocks = parseMarkdown(skipMetadata ? stripMetadata(markdown) : markdown, assetBasePath)
 
   return (
     <div className="min-w-0 space-y-6">
@@ -330,6 +359,21 @@ export function MarkdownDocument({ markdown, skipMetadata = false }: MarkdownDoc
           )
         }
 
+        if (block.type === 'code') {
+          return (
+            <div className="min-w-0 overflow-hidden rounded-lg border border-slate-800 bg-slate-950" key={`code-${index}`}>
+              {block.language ? (
+                <div className="border-b border-slate-800 bg-slate-900 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+                  {block.language}
+                </div>
+              ) : null}
+              <pre className="min-w-0 overflow-x-auto p-4 text-sm leading-7 text-slate-200">
+                <code className="font-mono whitespace-pre">{block.code}</code>
+              </pre>
+            </div>
+          )
+        }
+
         if (block.type === 'list') {
           const ListTag = block.ordered ? 'ol' : 'ul'
 
@@ -340,12 +384,12 @@ export function MarkdownDocument({ markdown, skipMetadata = false }: MarkdownDoc
             >
               {block.items.map((item) => (
                 <li className="min-w-0 rounded-lg bg-slate-950 px-4 py-3 [overflow-wrap:break-word]" key={item.text}>
-                  <span className="whitespace-pre-line">{renderInline(item.text)}</span>
+                  <span className="whitespace-pre-line">{renderInline(item.text, assetBasePath)}</span>
                   {item.children.length ? (
                     <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-400">
                       {item.children.map((child) => (
                         <li className="min-w-0 [overflow-wrap:break-word]" key={child}>
-                          {renderInline(child)}
+                          {renderInline(child, assetBasePath)}
                         </li>
                       ))}
                     </ul>
@@ -376,7 +420,7 @@ export function MarkdownDocument({ markdown, skipMetadata = false }: MarkdownDoc
                     <tr key={row.join('-')}>
                       {row.map((cell) => (
                         <td className="min-w-[140px] px-4 py-3 leading-6 [overflow-wrap:break-word]" key={cell}>
-                          {renderInline(cell)}
+                          {renderInline(cell, assetBasePath)}
                         </td>
                       ))}
                     </tr>
@@ -390,7 +434,7 @@ export function MarkdownDocument({ markdown, skipMetadata = false }: MarkdownDoc
         if (block.type === 'quote') {
           return (
             <blockquote className="min-w-0 rounded-lg border border-slate-800 bg-slate-950 p-5 text-sm font-medium leading-7 text-sky-200 [overflow-wrap:break-word]" key={`quote-${index}`}>
-              {renderInline(block.text)}
+              {renderInline(block.text, assetBasePath)}
             </blockquote>
           )
         }
@@ -401,7 +445,7 @@ export function MarkdownDocument({ markdown, skipMetadata = false }: MarkdownDoc
 
         return (
           <p className="min-w-0 whitespace-pre-line text-sm leading-8 text-slate-300 [overflow-wrap:break-word]" key={`${block.text}-${index}`}>
-            {renderInline(block.text)}
+            {renderInline(block.text, assetBasePath)}
           </p>
         )
       })}

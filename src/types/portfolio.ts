@@ -31,7 +31,7 @@ export type TimelineItem = {
 export type Project = {
   slug?: string
   title: string
-  category?: string
+  category?: string | string[]
   type?: string
   period?: string
   role?: string
