@@ -8,8 +8,8 @@ const navItems = [
   { label: 'Experience', path: '/', hash: 'experience' },
   { label: 'Projects', path: '/projects' },
   { label: 'Research Paper', path: '/research' },
-  { label: 'Skills', path: '/', hash: 'skills' },
   { label: 'Credentials', path: '/', hash: 'credentials' },
+  { label: 'Skills', path: '/', hash: 'skills' },
   { label: 'Contact', path: '/', hash: 'contact' },
 ]
 

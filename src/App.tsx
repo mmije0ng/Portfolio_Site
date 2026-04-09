@@ -97,8 +97,8 @@ function App() {
         <AboutSection />
         <ExperienceSection onNavigate={navigate} />
         <ProjectsSection onNavigate={navigate} />
-        <SkillsSection />
         <CredentialsSection />
+        <SkillsSection />
         <ContactSection />
       </main>
     )
