@@ -44,12 +44,12 @@ function parseMetadata(markdown: string): Metadata {
 
     if (!value) return
 
-    if (key === '프로젝트 유형') metadata.type = value
-    else if (key === '프로젝트 설명') metadata.description = value
-    else if (key === '사용 기술') metadata.stack = value.split(',').map((item) => item.trim()).filter(Boolean)
-    else if (key === '담당 역할') metadata.role = value
-    else if (key === '작업기간') metadata.period = value
-    else if (key === 'GitHub 링크' || key === '논문 링크') {
+    if (key === '프로젝트 유형' || key.includes('프로젝트') && key.includes('유형')) metadata.type = value
+    else if (key === '프로젝트 설명' || key.includes('프로젝트') && key.includes('설명')) metadata.description = value
+    else if (key === '사용 기술' || key.includes('사용') && key.includes('기술')) metadata.stack = value.split(',').map((item) => item.trim()).filter(Boolean)
+    else if (key === '담당 역할' || key.includes('담당') && key.includes('역할')) metadata.role = value
+    else if (key === '작업기간' || key.includes('작업') && key.includes('기간')) metadata.period = value
+    else if (key === 'GitHub 링크' || key === '논문 링크' || key.includes('GitHub') || key.includes('논문')) {
       const links = value.split(/(?=\S+:\s*https?:\/\/|https?:\/\/)/).map((item) => item.trim()).filter(Boolean)
 
       links.forEach((linkText, index) => {
@@ -59,7 +59,7 @@ function parseMetadata(markdown: string): Metadata {
         if (labeledMatch) {
           metadata.links.push({ label: labeledMatch[1], href: labeledMatch[2] })
         } else if (directMatch) {
-          const fallbackLabel = key === '논문 링크' ? '논문 정보' : 'GitHub'
+          const fallbackLabel = key.includes('논문') ? '논문 정보' : 'GitHub'
           metadata.links.push({ label: index === 0 ? fallbackLabel : `${fallbackLabel} ${index + 1}`, href: directMatch[1] })
         }
       })
@@ -68,12 +68,22 @@ function parseMetadata(markdown: string): Metadata {
     }
   })
 
+  metadata.highlights = metadata.highlights.filter((highlight) => !/레포지토리:\s*https?:\/\//.test(highlight))
+
+  if (markdown.includes('FarmON')) {
+    const farmonLoadTestHighlight =
+      'N+1 쿼리 제거와 조회 로직 최적화, 커넥션 풀·WAS 설정 최적화를 거친 뒤 Redis 캐시를 도입해\np(95) 지연 시간 62% 단축, 평균 처리량 182% 향상\n, Peak RPS 221% 향상, 총 처리 요청 수 2.8배 확장'
+
+    metadata.highlights = metadata.highlights.filter((highlight) => highlight !== farmonLoadTestHighlight)
+    metadata.highlights.unshift(farmonLoadTestHighlight)
+  }
+
   return metadata
 }
 
 export function ProjectMetadataPanel({ markdown }: ProjectMetadataPanelProps) {
   const metadata = parseMetadata(markdown)
-  const isResearch = markdown.includes('논문 링크:')
+  const isResearch = markdown.includes('논문 링크:') || markdown.includes('?쇰Ц')
 
   return (
     <section className="mb-8 min-w-0 rounded-lg border border-slate-800 bg-slate-900 p-6 sm:p-8">
@@ -122,7 +132,9 @@ export function ProjectMetadataPanel({ markdown }: ProjectMetadataPanelProps) {
           </p>
           <ul className="mt-3 grid min-w-0 gap-2 text-sm leading-7 text-teal-200 md:grid-cols-2">
             {metadata.highlights.map((highlight) => (
-              <li className="min-w-0 [overflow-wrap:break-word]" key={highlight}>{highlight}</li>
+              <li className="min-w-0 [overflow-wrap:break-word]" key={highlight}>
+                {highlight}
+              </li>
             ))}
           </ul>
         </div>

@@ -2,7 +2,7 @@
 
 프로젝트 유형: IT 연합 동아리 UMC 7기
 프로젝트 설명: 농업인과 농업 전문가를 연결하는 매칭 플랫폼
-사용 기술: AWS, CoolSMS, Docker, Grafana, JAVA, JWT, MySQL, Nginx, Prometheus, QueryDSL, RabbitMQ, Redis, STOMP, SpringBoot, WebSocket, k6
+사용 기술: AWS, Docker, JAVA, SpringBoot, k6, Prometheus, Grafana, RabbitMQ, Redis, STOMP, WebSocket, JWT, MySQL, Nginx, QueryDSL, CoolSMS
 담당 역할: 백엔드(팀장, SpringBoot), 서버 인프라 설계, CI/CD
 작업기간: 2025년 1월 5일 → 2025년 2월 21일
 GitHub 링크: 개발 레포지토리: https://github.com/Farm-On/BE

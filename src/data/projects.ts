@@ -89,7 +89,16 @@ export const projects: Project[] = [
     role: '백엔드 팀장, SpringBoot, 서버 인프라 설계, CI/CD',
     description: '농업인과 농업 전문가를 연결하는 매칭 플랫폼',
     impact: '부하테스트 기준 평균 응답 시간 약 70% 개선, 처리량 약 2.8배 확장',
-    stack: ['AWS', 'Docker', 'Grafana', 'JAVA', 'JWT', 'MySQL', 'Nginx', 'Prometheus', 'QueryDSL', 'RabbitMQ', 'Redis', 'STOMP', 'SpringBoot', 'WebSocket', 'k6'],
+    stack: [
+        // 부하테스트 & 모니터링
+        'k6', 'Prometheus', 'Grafana', 
+        // 백엔드 & 인프라
+        'JAVA', 'SpringBoot', 'QueryDSL', 'JWT', 'Nginx', 'RabbitMQ', 'STOMP', 'WebSocket', 
+        // 클라우드 & 컨테이너
+        'AWS', 'Docker', 
+        // 데이터베이스
+        'MySQL', 'Redis'
+      ],
     overview: ['농업인과 농업 전문가를 연결하는 매칭 플랫폼입니다.', '실시간 채팅, 검색, 역할 기반 접근 제어, 성능 개선까지 백엔드 팀장으로 주도했습니다.'],
     contributions: [
       'RabbitMQ 기반 실시간 채팅 구현 및 메시지 타입별 라우팅 설계',
