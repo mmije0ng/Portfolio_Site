@@ -1,7 +1,7 @@
 import { ArrowRight, DatabaseZap, Mail, ShieldCheck, Sparkles } from 'lucide-react'
 import profilePhoto from '../assets/박미정_이력서 사진.jpg'
-import { GitHubIcon, LinkedInIcon } from '../components/BrandIcons'
-import { heroStats, profile, profileKeywords } from '../data/portfolio'
+import { CVIcon, GitHubIcon, LinkedInIcon } from '../components/BrandIcons'
+import { heroStats, links, profile, profileKeywords } from '../data/portfolio'
 
 type HeroSectionProps = {
   onNavigate: (path: string, hash?: string) => void
@@ -20,6 +20,8 @@ function renderFocusIcon(label: string) {
 }
 
 export function HeroSection({ onNavigate }: HeroSectionProps) {
+  const cvLink = links.find((link) => link.label === 'CV')?.href
+
   return (
     <section className="border-b border-slate-800 bg-slate-950">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_260px] lg:items-center lg:py-24">
@@ -72,6 +74,17 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
               <LinkedInIcon className="h-4 w-4" />
               LinkedIn
             </a>
+            {cvLink ? (
+              <a
+                className="inline-flex items-center gap-2 rounded-lg border border-slate-700 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:border-slate-500"
+                href={cvLink}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <CVIcon className="h-4 w-4" />
+                CV
+              </a>
+            ) : null}
           </div>
 
           <div className="mt-10 grid gap-3 md:grid-cols-3">
