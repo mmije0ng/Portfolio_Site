@@ -433,7 +433,7 @@ export const awards: SimpleItem[] = [
 export const certifications: SimpleItem[] = [
   { title: '정보처리기사', meta: '한국산업인력공단 · 2025.12.25' },
   { title: 'AWS Certified Solutions Architect - Associate', meta: 'AWS · 2026.03.21' },
-  { title: 'SQL 개발자', meta: '한국데이터산업진흥원 · 2026.03.27' },
+  { title: 'SQLD', meta: '한국데이터산업진흥원 · 2026.03.27' },
   { title: 'TOPCIT LEVEL3 (617)', meta: '정보통신기획평가원 · 2025.11.01' },
   { title: 'Google Analytics Certification', meta: 'Google · 2026.02.05' },
   { title: 'TOEIC Speaking IH (140)', meta: 'YBM · 2026.03.08' },
