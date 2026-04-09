@@ -68,6 +68,20 @@ function resolveLinkHref(href: string, assetBasePath?: string) {
   return /^https?:\/\//.test(href) ? href : resolveProjectAsset(href, assetBasePath)
 }
 
+function getDownloadFileName(href: string) {
+  if (/^https?:\/\//.test(href)) return undefined
+
+  const normalizedHref = href.replace(/\\/g, '/')
+  const fileName = normalizedHref.split('/').at(-1)
+  if (!fileName) return undefined
+
+  try {
+    return decodeURIComponent(fileName)
+  } catch {
+    return fileName
+  }
+}
+
 function renderInline(text: string, assetBasePath?: string) {
   const nodes: ReactNode[] = []
   const linkPattern = /\[([^\]]+)]\(([^)]+)\)|(https?:\/\/[^\s]+)/g
@@ -79,12 +93,15 @@ function renderInline(text: string, assetBasePath?: string) {
       nodes.push(text.slice(lastIndex, match.index))
     }
 
+    const rawHref = match[2] ?? match[3]
     const label = match[1] ?? match[3]
-    const href = resolveLinkHref(match[2] ?? match[3], assetBasePath)
+    const href = resolveLinkHref(rawHref, assetBasePath)
+    const downloadFileName = getDownloadFileName(rawHref)
 
     nodes.push(
       <a
         className="inline max-w-full break-words text-sky-300 [overflow-wrap:anywhere] hover:text-sky-200"
+        download={downloadFileName}
         href={href}
         key={`${href}-${match.index}`}
         rel="noreferrer"
