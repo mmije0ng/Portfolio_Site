@@ -17,7 +17,7 @@ export function ResearchPage({ onNavigate }: ResearchPageProps) {
           type="button"
         >
           <ArrowLeft className="h-4 w-4" />
-          뒤로 돌아가기
+          Home
         </button>
         <div className="rounded-lg border border-slate-800 bg-slate-900 p-6">
           <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.24em] text-teal-300">

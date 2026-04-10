@@ -16,8 +16,8 @@ export const projects: Project[] = [
       '스마트컨트랙트',
       'Solidity',
       'Web3',
-      'IPFS',
       'Ganache',
+      'IPFS',
 
       // 2. 암호 (Cryptography)
       'CP-ABE',

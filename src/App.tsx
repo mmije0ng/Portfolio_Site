@@ -10,6 +10,7 @@ import { CredentialsSection } from './sections/CredentialsSection'
 import { ExperienceSection } from './sections/ExperienceSection'
 import { Header } from './sections/Header'
 import { HeroSection } from './sections/HeroSection'
+import { HowIWorkSection } from './sections/HowIWorkSection'
 import { ProjectsSection } from './sections/ProjectsSection'
 import { SkillsSection } from './sections/SkillsSection'
 
@@ -99,6 +100,7 @@ function App() {
         <ProjectsSection onNavigate={navigate} />
         <CredentialsSection />
         <SkillsSection />
+        <HowIWorkSection />
         <ContactSection />
       </main>
     )

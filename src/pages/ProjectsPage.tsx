@@ -36,7 +36,7 @@ export function ProjectsPage({ onNavigate }: ProjectsPageProps) {
           type="button"
         >
           <ArrowLeft className="h-4 w-4" />
-          뒤로 돌아가기
+          Home
         </button>
         <div className="grid gap-6 rounded-lg border border-slate-800 bg-slate-900 p-6 md:grid-cols-[1fr_220px] md:items-center">
           <div>

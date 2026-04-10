@@ -10,6 +10,7 @@ const navItems = [
   { label: 'Research Paper', path: '/research' },
   { label: 'Credentials', path: '/', hash: 'credentials' },
   { label: 'Skills', path: '/', hash: 'skills' },
+  { label: 'How I Work', path: '/', hash: 'how-i-work' },
   { label: 'Contact', path: '/', hash: 'contact' },
 ]
 

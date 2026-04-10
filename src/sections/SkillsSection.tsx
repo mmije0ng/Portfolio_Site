@@ -18,7 +18,6 @@ export function SkillsSection() {
       <SectionHeading
         eyebrow="Skills"
         title="기술 스택"
-        description="PRD의 기술 스택을 숙련도와 함께 카테고리별 배지로 정리했습니다."
       />
       <div className="grid gap-4 md:grid-cols-2">
         {skillGroups.map((group, index) => (

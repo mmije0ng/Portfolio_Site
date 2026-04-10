@@ -29,6 +29,7 @@ export const profileKeywords = [
   'Redis 캐시 최적화',
   'SDV·모빌리티 보안 연구',
   'LLM/VLM R&D',
+  '웹 / 모바일 풀스택'
 ]
 
 export const heroStats = [
@@ -111,7 +112,7 @@ export const experiences: TimelineItem[] = [
       'OTA 음성 업데이트 기능을 연동해 주행 중 안전성과 사용자 편의성을 함께 고려',
     ],
     link: {
-      label: 'OTA 플랫폼 프로젝트',
+      label: 'OTA Platform',
       href: '/projects/iot-ota-platform',
     },
   },
@@ -360,15 +361,15 @@ export const skillGroups: SkillGroup[] = [
       'Flask',
       'FastAPI',
       'JavaScript',
+      'TypeScript',
+      'React',
+      'React Native',
       'C',
       'C++',
       'Node.js',
       'Django',
-      'React',
-      'React Native',
       'Kotlin',
       'Swift',
-      'TypeScript',
       'Flutter',
       'Solidity',
     ],
@@ -376,18 +377,24 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Database & Query',
     items: [
+      'Redis',
       'MySQL',
       'MariaDB',
       'Oracle',
-      'Redis',
       'Firebase',
       'PostgreSQL',
       'QueryDSL',
+      'Optimistic Lock',
+      'Pessimistic Lock'
     ],
   },
   {
     title: 'Infrastructure & DevOps',
     items: [
+      'k6',
+      'Prometheus',
+      'Grafana',
+      'RabbitMQ',
       'Docker',
       'AWS',
       'EC2',
@@ -399,25 +406,24 @@ export const skillGroups: SkillGroup[] = [
       'S3',
       'Nginx',
       'GitHub Actions',
-      'k6',
-      'Prometheus',
-      'Grafana',
-      'RabbitMQ',
     ],
   },
   {
     title: 'Security, Blockchain & AI',
     items: [
-      'CP-ABE',
-      'AES-256',
       'Blockchain',
       'Web3',
       'Smart Contract',
       'ECDSA',
+      'CP-ABE',
+      'AES-256',
       'SHA3-256',
       'BLAKE3',
       'XGBoost',
       'SVM',
+      'MLP',
+      'Random Forest',
+      'NumPy • Pandas'
     ],
   },
 ]
@@ -456,3 +462,30 @@ export const links = [
   { label: 'CV', href: 'https://mmije0ng.notion.site/cv' },
   { label: 'Blog', href: 'https://mmije0ng.tistory.com/' },
 ]
+
+export const workPrinciples = [
+  {
+    title: '기술은 목적에 맞게 선택합니다',
+    description: '새로운 기술 자도 중요하지만, 이 기술이 지금 문제를 해결하는 데 왜 필요한지를 먼저 검토합니다.',
+  },
+  {
+    title: '설계 단계에서 예외 상황까지 봅니다',
+    description: '정상 흐름만 구현하지 않고 예외 처리, 실패 시나리오, 운영 중 발생할 문제까지 함께 고려하며 설계합니다.',
+  },
+  {
+    title: '작업 상황을 자주 공유합니다',
+    description: '진행 상황과 이슈를 빠르게 공유해 팀이 같은 맥락을 유지하도록 하고, 협업 비용을 줄이는 방식을 선호합니다.',
+  },
+  {
+    title: '함께 성장하는 팀을 중요하게 생각합니다',
+    description: '혼자 잘하는 것보다 팀원 모두가 이해하고 함께 성장하는 경험이 더 오래가는 성과를 만든다고 믿습니다.',
+  },
+  {
+    title: '넓은 시야로 개발을 바라봅니다',
+    description: '같은 개발이라도 기능 구현에만 머무르지 않고 사용자 경험, 운영 환경, 유지보수까지 함께 보는 시야를 중요하게 생각합니다.',
+  },
+  {
+    title: '즐겁고 건강한 협업 환경을 지향합니다',
+    description: '솔직하고 존중 있는 커뮤니케이션이 좋은 결과를 만든다고 믿으며, 일하기 좋은 팀 분위기를 중요하게 생각합니다.',
+  },
+] as const
