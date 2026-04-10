@@ -2,11 +2,10 @@
 
 프로젝트 유형: IT 연합 동아리 UMC 7기
 프로젝트 설명: 농업인과 농업 전문가를 연결하는 매칭 플랫폼
-사용 기술: AWS, Docker, JAVA, SpringBoot, k6, Prometheus, Grafana, RabbitMQ, Redis, STOMP, WebSocket, JWT, MySQL, Nginx, QueryDSL, CoolSMS
-담당 역할: 백엔드(팀장, SpringBoot), 서버 인프라 설계, CI/CD
+사용 기술: k6, Prometheus, Grafana, JAVA, SpringBoot, QueryDSL, JWT, Nginx, RabbitMQ, STOMP, WebSocket, AWS, Docker, MySQL, Redis, React, JavaScript, CoolSMS
+담당 역할: 백엔드(팀장, SpringBoot), 서버 인프라 설계, CI/CD, 동시성 이슈 해결
 작업기간: 2025년 1월 5일 → 2025년 2월 21일
-GitHub 링크: 개발 레포지토리: https://github.com/Farm-On/BE
-부하테스트 레포지토리: https://github.com/mmije0ng/FarmON_BE_Refactor
+GitHub 링크: https://github.com/mmije0ng/FarmON_BE_LoadTesting
 
 ![image.png](image%2043.png)
 
@@ -233,6 +232,5 @@ Prometheus와 Grafana를 통해 주요 성능 지표를 모니터링하며 **시
 
 프로젝트 링크
 
-- 개발 Repository: [https://github.com/Farm-On/BE](https://github.com/Farm-On/BE)
-- 부하테스트 Repository: [https://github.com/mmije0ng/FarmON_BE_Refactor](https://github.com/mmije0ng/FarmON_BE_Refactor)
+- GitHub: [https://github.com/mmije0ng/FarmON_BE_LoadTesting](https://github.com/mmije0ng/FarmON_BE_LoadTesting)
 - 배포 링크: [https://farm-on.netlify.app/](https://farm-on.netlify.app/) *(서버 비용으로 인해 현재 서비스 중단)*

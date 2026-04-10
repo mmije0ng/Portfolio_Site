@@ -11,28 +11,35 @@ export const projects: Project[] = [
     description: '블록체인 + CP-ABE + IPFS를 결합한 분산형 OTA 프레임워크',
     impact: '현대자동차 산학협력 프로젝트, 2025 한성대학교 캡스톤디자인 우수상',
     stack: [
-      'AES',
+      // 1. 블록체인 (Blockchain)
       'Blockchain',
-      'CP-ABE',
-      'Docker',
-      'ECDSA',
-      'Flask',
-      'Ganache',
-      'IPFS',
-      'JavaScript',
-      'LLM',
-      'MCP',
-      'NLU',
-      'Python',
-      'React',
-      'SHA',
-      'Solidity',
-      'Swagger',
-      'TypeScript',
-      'Web3',
-      'Whisper',
       '스마트컨트랙트',
+      'Solidity',
+      'Web3',
+      'IPFS',
+      'Ganache',
+
+      // 2. 암호 (Cryptography)
+      'CP-ABE',
+      'ECDSA',
+      'AES-256',
+      'SHA-256',
+
+      // 3. AI 관련 (Artificial Intelligence)
+      'LLM',
+      'Whisper',
+      'NLU',
       '화자인식',
+      'MCP',
+
+      // 4. 개발 언어 및 프레임워크 (Web / DevOps)
+      'Python',
+      'Flask',
+      'JavaScript',
+      'TypeScript',
+      'React',
+      'Docker',
+      'Swagger',
     ],
     overview: [
       '블록체인으로 업데이트 기록의 위·변조를 방지하고 컴플라이언스 대응이 가능한 OTA 구조를 설계했습니다.',
@@ -95,9 +102,10 @@ export const projects: Project[] = [
         // 백엔드 & 인프라
         'JAVA', 'SpringBoot', 'QueryDSL', 'JWT', 'Nginx', 'RabbitMQ', 'STOMP', 'WebSocket', 
         // 클라우드 & 컨테이너
-        'AWS', 'Docker', 
+        'AWS', 'Docker',  'SpringBoot',
         // 데이터베이스
-        'MySQL', 'Redis'
+        'MySQL', 'Redis',
+        'React', 'JavaSCript', 'CoolSMS'
       ],
     overview: ['농업인과 농업 전문가를 연결하는 매칭 플랫폼입니다.', '실시간 채팅, 검색, 역할 기반 접근 제어, 성능 개선까지 백엔드 팀장으로 주도했습니다.'],
     contributions: [
@@ -121,10 +129,7 @@ export const projects: Project[] = [
         result: '메시지 영속성을 확보하고 채팅 안정성을 높였습니다.',
       },
     ],
-    links: [
-      { label: 'GitHub', href: 'https://github.com/Farm-On/BE' },
-      { label: 'Load Test Repo', href: 'https://github.com/mmije0ng/FarmON_BE_Refactor' },
-    ],
+    links: [{ label: 'GitHub', href: 'https://github.com/mmije0ng/FarmON_BE_LoadTesting' }],
   },
   {
     slug: 'money-touch',
@@ -135,7 +140,23 @@ export const projects: Project[] = [
     role: '백엔드 팀장, SpringBoot, 서버 인프라 설계, CI/CD',
     description: '함께 소비를 관리하는 SNS형 소비 관리 가계부 웹앱 서비스',
     impact: 'DB 유니크 제약과 비관적 락으로 소비 루틴 동시성 이슈 해결',
-    stack: ['AWS', 'Docker', 'JAVA', 'JWT', 'MySQL', 'Nginx', 'OAuth2.0', 'QueryDSL', 'Redis', 'SendGrid', 'SpringBoot'],
+    stack: [
+      'AWS',
+      'Docker',
+      'Github Actions',
+      'Bastion Host',
+      'SpringBoot',
+      'JAVA',
+      'JWT',
+      'MySQL',
+      '비관적 락',
+      'QueryDSL',
+      'Nginx',
+      'Redis',
+      'OAuth2.0',
+      'SendGrid',
+      'React','TypeScript'
+    ],
     overview: ['함께 소비를 관리하는 SNS형 소비 관리 가계부 웹앱 서비스입니다.', '인프라 보안, 소비 루틴 동시성 제어, 가계부 핵심 기능 개발을 담당했습니다.'],
     contributions: ['AWS·Docker 기반 CI/CD 및 배포 환경 구축', 'Bastion Host 도입으로 Private Subnet 내 RDS 접근 구조 설계', '일일 소비 기록, 고정비, 소비 루틴 기능 구현', 'Swagger 기반 API 명세 작성'],
     problemSolving: [
@@ -157,7 +178,7 @@ export const projects: Project[] = [
     role: '백엔드(SpringBoot), AI',
     description: 'AI 기반 광고 이미지 제작·문자 발송 서비스',
     impact: '이미지 생성 응답 시간을 비동기 구조로 개선하여 약 5배 단축',
-    stack: ['Azure', 'DALL·E 3', 'JAVA', 'OpenAI', 'SpringBoot', '뿌리오'],
+    stack: ['DALL·E 3', 'OpenAI', 'Azure', 'JAVA', 'SpringBoot', '뿌리오', 'React', 'JavaScript'],
     overview: ['생성형 AI로 광고 이미지를 제작하고 템플릿으로 편집해 문자로 발송하는 서비스입니다.', '다우기술 문자 발송 서비스 뿌리오와 연계해 개발했습니다.'],
     contributions: ['DALL·E-3 기반 비동기 이미지 생성 로직 구현', 'OpenAI와 Azure Text Analytics 기반 광고 문자 자동 생성 로직 구현', 'Azure Blob Storage 연동', 'ERD 설계, Swagger API 명세, 와이어프레임 작성'],
     problemSolving: [
@@ -179,7 +200,7 @@ export const projects: Project[] = [
     role: '머신러닝, 백엔드(Flask), 인프라 설계, 프론트&백 CI/CD, 팀장',
     description: '머신러닝 모델 기반 사이트 URL 피싱 여부 판단 서비스',
     impact: '한성공학경진대회 동상, 정확도 0.9538, 탐지 시간 약 62% 단축',
-    stack: ['Flask', 'MLP', 'Python', 'Random Forest', 'SVM', 'XGBoost', 'pandas'],
+    stack: ['XGBoost', 'MLP',  'Random Forest', 'SVM',  'pandas', 'Python', 'Flask', 'MySQL', 'AWS', 'Github Actions', 'TypeScript', 'React'],
     overview: ['URL, 도메인, 콘텐츠 기반 피처로 웹 피싱 여부를 판단하는 서비스입니다.', 'Flask API, React 웹, Chrome 확장 프로그램, AWS 배포 파이프라인을 구성했습니다.'],
     contributions: ['SVM, XGBoost 등 모델 비교 및 성능 평가', 'URL·Domain·Content 기반 피처 추출 알고리즘 구현', 'Flask 피싱 판별 API와 React/Chrome 확장 프로그램 연동', 'GitHub Actions와 AWS CodeDeploy 기반 CI/CD 구축'],
     problemSolving: [
@@ -201,7 +222,7 @@ export const projects: Project[] = [
     role: '풀스택 (iOS, 백엔드)',
     description: '공공데이터 기반 지역 범죄 통계&경찰서 조회 iOS 애플리케이션',
     impact: '공공데이터 적재와 통계 처리 성능 개선',
-    stack: ['JAVA', 'JWT', 'MySQL', 'OAuth2.0', 'QueryDSL', 'SpringBoot', 'Swift', 'SwiftUI', '공공데이터'],
+    stack: ['Swift', 'SwiftUI',  'SpringBoot', 'JAVA', 'JWT', 'MySQL', 'OAuth2.0', 'QueryDSL', '공공데이터'],
     overview: ['지역 범죄 통계와 경찰서 위치 정보를 조회할 수 있는 iOS 애플리케이션입니다.', 'Spring Boot 백엔드와 SwiftUI iOS 앱을 개인 프로젝트로 구현했습니다.'],
     contributions: ['공공데이터 수집·적재 및 범죄 통계 산출 로직 구현', 'Spring Boot API와 SwiftUI iOS 클라이언트 개발', 'OAuth2.0, JWT, QueryDSL 조회 로직 구성'],
     problemSolving: [
@@ -276,7 +297,7 @@ export const projects: Project[] = [
     role: '백엔드 (SpringBoot)',
     description: '대학 캠퍼스 내 기부 및 중고 거래 서비스',
     impact: 'Redis 검색, JWT 인증, 대학 순위 스케줄링, 실시간 채팅 구현',
-    stack: ['AWS', 'JAVA', 'JWT', 'MySQL', 'Redis', 'STOMP', 'SpringBoot', 'WebSocket'],
+    stack: ['AWS', 'JAVA', 'SpringBoot', 'JWT', 'MySQL', 'Redis', 'STOMP', 'WebSocket', 'React', 'TypeScript'],
     overview: ['재학생 인증을 통해 같은 대학 사용자 간 안전한 거래를 지원하는 중고 거래 및 기부 플랫폼입니다.', '환경 점수와 대학별 랭킹 시스템으로 사용자 참여를 유도했습니다.'],
     contributions: ['대학 이메일 인증 및 JWT 기반 인증·인가 구현', 'Refresh Token Redis 저장 구조 적용', '환경 점수 기반 대학 랭킹 스케줄링 구현', 'WebSocket, STOMP 기반 1:1 실시간 채팅 구축'],
     problemSolving: [
@@ -298,7 +319,7 @@ export const projects: Project[] = [
     role: '프론트엔드 (React Native)',
     description: '사용자의 재정 관리를 돕는 크로스플랫폼 애플리케이션',
     impact: 'FCM 기반 알림과 통계 UI를 갖춘 재정 관리 앱 구현',
-    stack: ['FCM', 'Firebase', 'JavaScript', 'React Native'],
+    stack: ['JavaScript', 'React Native', 'FCM', 'Firebase'],
     overview: ['수입·지출 관리, 예산 설정, 통계 시각화, 캘린더 기록 관리를 제공하는 크로스플랫폼 앱입니다.', 'Firebase 기반 데이터 관리와 FCM 알림 기능을 연동했습니다.'],
     contributions: ['월별 수입·지출 통계 및 연령대별 지출 비교 UI 구현', '메뉴바와 페이지 라우팅 구조 설계', 'Firebase FCM 기반 알림 페이지와 수신 처리 로직 구현'],
     problemSolving: [
@@ -320,7 +341,7 @@ export const projects: Project[] = [
     role: '프론트엔드 (React)',
     description: 'React 기반 타이핑 연습 사이트',
     impact: '한글 자소 단위 오타 판별과 타이핑 결과 분석 UI 구현',
-    stack: ['Chakra UI', 'JavaScript', 'React', 'framer-motion', 'lottie-react', 'styled-components', 'three.js'],
+    stack: ['JavaScript', 'React', 'Chakra UI', 'framer-motion', 'lottie-react', 'styled-components', 'three.js'],
     overview: ['타이핑 속도와 정확도 향상을 위한 연습 모드와 키워드 퀴즈를 제공하는 React 기반 웹 서비스입니다.', '학습 요소와 게임적 요소를 결합해 지속적인 사용자 참여를 유도했습니다.'],
     contributions: ['타이핑 결과 분석 대시보드 UI 구현', '실시간 WPM, 정확도, 오타 수, 진행도 계산 알고리즘 구현', '오타 패턴을 가상 키보드에 시각화하는 로직 구축'],
     problemSolving: [
