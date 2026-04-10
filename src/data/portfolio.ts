@@ -89,7 +89,7 @@ export const experiences: TimelineItem[] = [
     },
   },
   {
-    title: 'UMC 8기 한성대 Server SpringBoot',
+    title: 'UMC 8th Server SpringBoot 시니어코스',
     period: '2025.03.14 - 2025.08.23',
     category: 'Backend Lead',
     description: 'SNS형 소비 관리 웹앱 돈터치 개발',
@@ -133,7 +133,7 @@ export const experiences: TimelineItem[] = [
     ],
   },
   {
-    title: 'UMC 7기 한성대 Server SpringBoot',
+    title: 'UMC 7th Server SpringBoot',
     period: '2024.09.16 - 2025.02.21',
     category: 'Backend Lead',
     description: '농업인과 농업 전문가를 연결하는 매칭 플랫폼 FarmON 개발',
@@ -163,7 +163,7 @@ export const experiences: TimelineItem[] = [
     },
   },
   {
-    title: '제20회 한성공학경진대회',
+    title: '제 20회 한성공학경진대회',
     period: '2024.07 - 2025.09',
     category: 'Competition Lead',
     description: '머신러닝 기반 웹 피싱 탐지 서비스 개발',
