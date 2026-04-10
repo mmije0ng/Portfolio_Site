@@ -27,11 +27,11 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
     <section className="border-b border-slate-800 bg-slate-950">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_260px] lg:items-start lg:py-24">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-900 px-3 py-2 text-sm font-semibold text-sky-300">
+          <div className="inline-flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-900 px-3 py-2 text-xs font-semibold text-sky-300">
             <Sparkles className="h-4 w-4" />
             {profile.role}
           </div>
-          <h1 className="mt-6 whitespace-pre-line text-2xl font-bold leading-tight tracking-tight text-white sm:text-4xl">{profile.tagline}</h1>
+          <h1 className="mt-6 whitespace-pre-line text-xl font-bold leading-tight tracking-tight text-white sm:text-3xl">{profile.tagline}</h1>
           <div className="mt-6 flex max-w-3xl flex-wrap gap-2">
             {profileKeywords.map((keyword) => (
               <span className="rounded-md bg-slate-900 px-3 py-1.5 text-sm font-medium text-slate-300 ring-1 ring-slate-800" key={keyword}>

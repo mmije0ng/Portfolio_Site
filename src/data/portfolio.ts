@@ -48,6 +48,7 @@ export const experiences: TimelineItem[] = [
     bullets: [
       'SDV 환경에 적합한 암호 기술 및 블록체인 연구 수행',
       '현대자동차 연구원과 산학협력 프로젝트 수행',
+      '한국자동차공학회 사이버보안세션 논문 2편 투고',
       'LLM/VLM 연계 한일 범용 주행모델 개발 R&D 과제 참여',
     ],
     links: [
@@ -80,6 +81,7 @@ export const experiences: TimelineItem[] = [
       '블록체인으로 업데이트 기록의 위·변조를 방지하는 구조 설계',
       '스마트 컨트랙트로 업데이트 배포와 결제를 원자적으로 처리',
       '취약점 스캔, 라이선스 충돌 검사, 의존성 충돌 분석으로 공개 품질과 보안성 확보',
+      '캡스톤 우수상 수상 (2등)'
     ],
     link: {
       label: 'OTA Platform',
@@ -123,8 +125,7 @@ export const experiences: TimelineItem[] = [
     description: '한국자동차공학회 춘계학술대회 사이버보안 세션 논문 2편 투고 및 발표',
     bullets: [
       '속성 만료와 속성 레벨 키 갱신을 활용한 CP-ABE 기반 IoT 소프트웨어 업데이트 보안 연구 투고',
-      '자동차 ECU 환경의 소프트웨어 업데이트를 위한 해시 함수 성능 평가 연구 투고',
-      '자동차 ECU 환경 해시 함수 성능 평가 연구로 우수 발표 논문상 수상',
+      '자동차 ECU 환경의 소프트웨어 업데이트를 위한 해시 함수 성능 평가 연구 투고 (학부생 부분 우수발표 논문상)',
     ],
     links: [
       { label: 'CP-ABE 논문', href: '/research/cp-abe-iot-update-security' },
@@ -138,7 +139,7 @@ export const experiences: TimelineItem[] = [
     description: '농업인과 농업 전문가를 연결하는 매칭 플랫폼 FarmON 개발',
     bullets: [
       'k6 기반 동시 사용자 1,000명 규모 부하 테스트 수행',
-      'Prometheus·Grafana로 병목 구간을 모니터링하고 Redis 캐시로 평균 응답 시간 약 70% 개선',
+      'Prometheus·Grafana로 병목 구간을 모니터링하고 Redis 캐시로 평균 응답 시간 약 62% 개선',
       'RabbitMQ 메시지 브로커를 도입해 채팅 메시지 유실을 방지하는 아키텍처 설계',
     ],
     link: {
@@ -153,8 +154,8 @@ export const experiences: TimelineItem[] = [
     description: '다우기술 기업연계 AI 템플릿 메이커 개발',
     bullets: [
       '생성형 AI로 제작한 광고 이미지를 템플릿으로 꾸미고 문자 발송 서비스 뿌리오와 연동',
-      '다우기술과 연계된 산학협력 프로젝트로 진행',
       'DALL·E-3 기반 비동기 이미지 생성 로직 최적화로 이미지 생성 속도 약 8배 개선',
+      '한성SW중심대학 페스티벌 우수상 수상 (2등)'
     ],
     link: {
       label: 'AI Template Maker',
@@ -169,7 +170,7 @@ export const experiences: TimelineItem[] = [
     bullets: [
       '팀장으로 참여해 머신러닝 모델 학습 및 피처 엔지니어링 수행',
       '최종 모델 정확도 0.9538 달성 및 피처 엔지니어링으로 탐지 시간 약 62% 단축',
-      'Chrome 웹스토어 확장 프로그램 출시 및 웹 사이트 배포',
+      'Chrome 웹스토어 확장 프로그램 출시 및 웹 사이트 배포, 동상 수상 (3등)',
     ],
     link: {
       label: '웹 피싱 탐지 프로젝트',
@@ -430,9 +431,9 @@ export const skillGroups: SkillGroup[] = [
 
 export const awards: SimpleItem[] = [
   { title: '2025 한국자동차공학회 춘계학술대회 우수발표 논문상', meta: '한국자동차공학회 · 2025.06.24' },
-  { title: '2025 한성대학교 컴퓨터공학부 캡스톤디자인 우수상', meta: '한성대학교 컴퓨터공학부 · 2025.05.30' },
-  { title: '2024 한성 SW중심대학 페스티벌 프리캡스톤 전시회 우수상', meta: '한성대학교 SW중심대학사업단 · 2024.11.29' },
-  { title: '제20회 한성공학경진대회 동상', meta: '한성대학교 · 2024.09.26' },
+  { title: '2025 한성대학교 컴퓨터공학부 캡스톤디자인 우수상 (2등)', meta: '한성대학교 컴퓨터공학부 · 2025.05.30' },
+  { title: '2024 한성 SW중심대학 페스티벌 프리캡스톤 전시회 우수상 (2등)', meta: '한성대학교 SW중심대학사업단 · 2024.11.29' },
+  { title: '제20회 한성공학경진대회 동상 (3등)', meta: '한성대학교 · 2024.09.26' },
   { title: '성적 우수 장학금 3회 수상', meta: '한성대학교 · 2022.09 - 2024.03' },
 ]
 
@@ -440,7 +441,7 @@ export const certifications: SimpleItem[] = [
   { title: '정보처리기사', meta: '한국산업인력공단 · 2025.12.25' },
   { title: 'AWS Certified Solutions Architect - Associate', meta: 'AWS · 2026.03.21' },
   { title: 'SQLD', meta: '한국데이터산업진흥원 · 2026.03.27' },
-  { title: 'TOPCIT LEVEL3 (617)', meta: '정보통신기획평가원 · 2025.11.01' },
+  { title: 'TOPCIT(소프트웨어 역량 검정) LEVEL3 (617)', meta: '정보통신기획평가원 · 2025.11.01' },
   { title: 'Google Analytics Certification', meta: 'Google · 2026.02.05' },
   { title: 'TOEIC Speaking IH (140)', meta: 'YBM · 2026.03.08' },
 ]

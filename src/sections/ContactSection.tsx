@@ -17,13 +17,13 @@ export function ContactSection() {
         <div className="grid gap-6 rounded-lg border border-slate-800 bg-slate-900 p-6 text-white sm:p-8 lg:grid-cols-[1fr_0.8fr]">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.24em]">Contact</p>
-            <h3 className="mt-3 max-w-3xl text-2xl font-extrabold leading-tight sm:text-3xl">
+            <h3 className="mt-3 max-w-3xl text-xl font-extrabold leading-tight sm:text-2xl">
               문제를 끝까지 이해하고, 
             </h3>
-            <h3 className="mt-3 max-w-3xl text-2xl font-extrabold leading-tight sm:text-3xl">
+            <h3 className="mt-3 max-w-3xl text-xl font-extrabold leading-tight sm:text-2xl">
               안정적인 서비스로 구현하는
             </h3>
-            <h3 className="mt-3 max-w-3xl text-2xl font-extrabold leading-tight sm:text-3xl">
+            <h3 className="mt-3 max-w-3xl text-xl font-extrabold leading-tight sm:text-2xl">
               개발자로 기여하겠습니다.
             </h3>
           </div>

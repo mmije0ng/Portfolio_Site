@@ -48,7 +48,7 @@ export function ExperienceSection({ onNavigate }: ExperienceSectionProps) {
       <SectionHeading
         eyebrow="Experience"
         title="실사용, 성능 개선, 연구 과제까지 이어진 경험"
-        description="프로젝트형 인턴, 동아리 백엔드 리드, 모빌리티 보안 연구를 시간 흐름에 따라 정리했습니다."
+        description="프로젝트형 인턴, 모빌리티 보안 학부연구생, 백엔드 리드 등 주요 경험을 시간 흐름에 따라 정리했습니다."
       />
       <div className="relative grid gap-5 lg:grid-cols-2">
         <div className="absolute left-4 top-0 hidden h-full w-px bg-slate-800 lg:block" />

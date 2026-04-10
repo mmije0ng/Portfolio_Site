@@ -8,7 +8,7 @@ export const projects: Project[] = [
     type: '산학협력(현대자동차), 2025 오픈소스 개발자대회, 캡스톤디자인',
     period: '2025년 2월 3일 → 2025년 10월 27일',
     role: '암호 모듈, 제조사&디바이스 백엔드, 블록체인&IPFS 연동, 화자인식, 디바이스 취약점 진단',
-    description: '블록체인 + CP-ABE + IPFS를 결합한 분산형 OTA 프레임워크',
+    description: '블록체인 + CP-ABE + IPFS + 음성인식을 결합한 분산형 OTA 프레임워크',
     impact: '현대자동차 산학협력 프로젝트, 2025 한성대학교 캡스톤디자인 우수상',
     stack: [
       // 1. 블록체인 (Blockchain)
@@ -70,7 +70,7 @@ export const projects: Project[] = [
     period: '2025년 8월 11일 → 2025년 10월 12일',
     role: '백엔드 (FastAPI)',
     description: '(주)오케이마트의 쇼핑몰 ERP 자동화 연동 통합 관리 시스템',
-    impact: '사내 배포 완료 후 직원 실사용 중',
+    impact: '프로젝트형 인턴으로 참여, 사내 배포 완료 후 직원 실사용 중',
     stack: ['Eccount', 'FastAPI', 'MinIO', 'Python', '사방넷', 'n8n'],
     overview: [
       '오케이마트 사내 쇼핑몰 ERP 연동 업무를 자동화하기 위한 통합 관리 시스템입니다.',
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     period: '2025년 1월 5일 → 2025년 2월 21일',
     role: '백엔드 팀장, SpringBoot, 서버 인프라 설계, CI/CD',
     description: '농업인과 농업 전문가를 연결하는 매칭 플랫폼',
-    impact: '부하테스트 기준 평균 응답 시간 약 70% 개선, 처리량 약 2.8배 확장',
+    impact: '부하테스트 및 성능최적화로 지연 시간 62% 단축, 평균 처리량 182% 향상\n, Peak RPS 221% 향상, 총 처리 요청 수 2.8배 확장',
     stack: [
         // 부하테스트 & 모니터링
         'k6', 'Prometheus', 'Grafana', 

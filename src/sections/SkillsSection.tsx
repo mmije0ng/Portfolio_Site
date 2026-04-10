@@ -18,6 +18,7 @@ export function SkillsSection() {
       <SectionHeading
         eyebrow="Skills"
         title="기술 스택"
+        description="백엔드 개발, 인프라 구축, 성능 개선, 보안과 연구까지 실제로 사용해온 기술 스택을 정리했습니다."
       />
       <div className="grid gap-4 md:grid-cols-2">
         {skillGroups.map((group, index) => (

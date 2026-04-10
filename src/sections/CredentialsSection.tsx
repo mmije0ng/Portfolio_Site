@@ -38,7 +38,11 @@ function ItemList({ items, tone }: ItemListProps) {
 export function CredentialsSection() {
   return (
     <section className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8" id="credentials">
-      <SectionHeading eyebrow="Credentials" title="수상, 자격, 교육 이력" />
+      <SectionHeading
+        eyebrow="Credentials"
+        title="자격증, 수상, 교육 이력"
+        description="자격증, 수상 이력, 실무 역량을 넓혀온 교육 이력을 정리했습니다."
+      />
       <div className="grid gap-8 lg:grid-cols-3">
         <div>
           <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-white">

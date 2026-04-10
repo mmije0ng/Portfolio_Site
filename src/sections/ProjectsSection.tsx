@@ -12,6 +12,7 @@ type ProjectCardProps = {
   featured?: boolean
   number?: number
   onOpen?: (project: Project) => void
+  compact?: boolean
 }
 
 const categoryStyles = {
@@ -50,7 +51,7 @@ function renderProjectIcon(category?: string) {
   return <Code2 className="h-6 w-6" />
 }
 
-export function ProjectCard({ project, featured = false, number, onOpen }: ProjectCardProps) {
+export function ProjectCard({ project, featured = false, number, onOpen, compact = false }: ProjectCardProps) {
   const primaryCategory = getPrimaryCategory(project)
   const categoryClass = categoryStyles[primaryCategory as keyof typeof categoryStyles] ?? categoryStyles.Backend
   const categoryLabel = getCategoryLabel(project)
@@ -83,7 +84,18 @@ export function ProjectCard({ project, featured = false, number, onOpen }: Proje
       tabIndex={isClickable ? 0 : undefined}
     >
       <div className={cn('grid h-full', featured && 'md:grid-cols-[1.1fr_0.9fr]')}>
-        <div className={cn(useLegacyThumbnailLayout ? 'relative min-h-[220px] overflow-hidden bg-slate-950' : 'relative h-[260px] overflow-hidden bg-slate-950', featured && useLegacyThumbnailLayout && 'md:min-h-[360px]')}>
+        <div
+          className={cn(
+            useLegacyThumbnailLayout
+              ? compact
+                ? 'relative min-h-[170px] overflow-hidden bg-slate-950'
+                : 'relative min-h-[220px] overflow-hidden bg-slate-950'
+              : compact
+                ? 'relative h-[190px] overflow-hidden bg-slate-950'
+                : 'relative h-[260px] overflow-hidden bg-slate-950',
+            featured && useLegacyThumbnailLayout && (compact ? 'md:min-h-[240px]' : 'md:min-h-[360px]'),
+          )}
+        >
           {thumbnail ? (
             <img
               alt={`${project.title} thumbnail`}
@@ -103,22 +115,24 @@ export function ProjectCard({ project, featured = false, number, onOpen }: Proje
             {categoryLabel}
           </span>
         </div>
-        <div className="flex min-w-0 flex-col p-6">
+        <div className={cn('flex min-w-0 flex-col', compact ? 'p-4' : 'p-6')}>
           <div className="flex items-center gap-3 text-sm font-semibold text-sky-300">
             <div className={cn('flex h-10 w-10 shrink-0 items-center justify-center rounded-lg', categoryClass)}>
               {renderProjectIcon(primaryCategory)}
             </div>
             <span>{project.type ?? categoryLabel}</span>
           </div>
-          <h3 className="mt-5 min-w-0 text-2xl font-semibold tracking-tight text-white [overflow-wrap:break-word]">
+          <h3 className={cn('mt-4 min-w-0 font-semibold tracking-tight text-white [overflow-wrap:break-word]', compact ? 'text-lg' : 'text-2xl')}>
             {number ? `${number}. ` : ''}
             {project.title}
           </h3>
-          <p className="mt-4 min-w-0 text-sm leading-7 text-slate-400 [overflow-wrap:break-word]">{project.description}</p>
-          <p className="mt-5 rounded-lg bg-slate-950 p-4 text-sm font-medium leading-6 text-slate-300">
+          <p className={cn('mt-3 min-w-0 text-slate-400 [overflow-wrap:break-word]', compact ? 'text-xs leading-6' : 'text-sm leading-7')}>
+            {project.description}
+          </p>
+          <p className={cn('mt-4 rounded-lg bg-slate-950 text-sm font-medium text-slate-300', compact ? 'p-3 text-xs leading-5' : 'p-4 leading-6')}>
             {project.impact}
           </p>
-          <div className="mt-5">
+          <div className="mt-4">
             <PillList items={project.stack} />
           </div>
         </div>
@@ -146,6 +160,7 @@ export function ProjectsSection({ onNavigate }: ProjectsSectionProps) {
       <div className="grid gap-4 md:grid-cols-2">
         {featuredProjects.map((project, index) => (
           <ProjectCard
+            compact
             featured={index === 0}
             key={project.title}
             number={index + 1}
