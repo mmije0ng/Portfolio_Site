@@ -2,14 +2,14 @@ import type { Profile, Project, SimpleItem, SkillGroup, TimelineItem } from '../
 
 export const profile: Profile = {
   name: '박미정',
-  role: 'Backend Developer · Mobility Security Researcher',
+  role: 'Backend Developer · Mobility Security Researcher  · Cloud Infra Engineer',
   birthDate: '2004.01.08',
   phone: '010-5501-0589',
   email: 'arsvita0116@gmail.com',
   education: '한성대학교 컴퓨터공학부 (모바일소프트웨어·웹공학 트랙) 2022.03 - 2026.08 졸업 예정',
   gpa: '4.1 / 4.5',
   github: 'https://github.com/mmije0ng',
-  linkedin: 'https://www.linkedin.com/in/park-mijeong/',
+  linkedin: 'https://www.linkedin.com/in/park-mijeong',
   tagline: '트래픽, 인프라, 보안 연구까지 제품을 끝까지 책임지는 백엔드 개발자',
   summary: [
     'IT 연합 동아리에서 1년간 활동하며 Spring Boot 기반 백엔드 개발과 AWS, Docker 기반의 인프라 구축 및 CI/CD 운영을 담당했습니다. RabbitMQ 기반의 메시지 유실 없는 안정적인 아키텍처를 설계한 경험이 있습니다.',

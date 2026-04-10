@@ -27,16 +27,14 @@ export function HowIWorkSection() {
 
           return (
             <article
-              className="flex h-full flex-col rounded-lg border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-slate-700"
+              className="rounded-lg border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-slate-700"
               key={principle.title}
             >
               <div className={`flex h-12 w-12 items-center justify-center rounded-lg ${accentStyle}`}>
                 <Icon className="h-6 w-6" />
               </div>
-              <div className="mt-5 flex flex-1 flex-col">
-                <h3 className="min-h-[3.5rem] text-lg font-semibold leading-7 text-white">{principle.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-400">{principle.description}</p>
-              </div>
+              <h3 className="mt-5 text-lg font-semibold text-white">{principle.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-400">{principle.description}</p>
             </article>
           )
         })}
