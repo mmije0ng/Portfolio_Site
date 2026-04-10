@@ -293,7 +293,7 @@ export const papers: Project[] = [
     role: '논문 작성 및 보안 구조 연구',
     description: '속성 만료와 속성 레벨 키 갱신을 활용한 업데이트 보안 강화 연구',
     impact: '2025 한국자동차공학회 춘계학술대회 사이버보안 세션 투고',
-    stack: ['CP-ABE', 'Dynamic CP-ABE', 'IoT Security', 'Software Update'],
+    stack: ['CP-ABE', 'Dynamic CP-ABE', 'IoT Security', 'Software Update', 'Python'],
     overview: [
       'IoT 소프트웨어 업데이트 과정에서 업데이트 파일의 접근 권한을 속성 기반으로 제어하는 보안 구조를 다뤘습니다.',
       '속성 만료와 속성 레벨 키 갱신을 활용해 권한 변경 상황에서도 업데이트 접근 제어가 유지되는 방향을 정리했습니다.',
@@ -325,7 +325,7 @@ export const papers: Project[] = [
     role: '성능 평가 및 논문 작성',
     description: '자동차 ECU 환경에서 소프트웨어 업데이트를 위한 해시 함수 성능 평가',
     impact: '2025 한국자동차공학회 춘계학술대회 우수 발표 논문상',
-    stack: ['BLAKE3', 'SHA-256', 'ECU', 'Hash Function', 'Automotive Security'],
+    stack: ['BLAKE3', 'SHA-256', 'ECU', 'Hash Function', 'Automotive Security', 'C'],
     overview: [
       '자동차 ECU 환경에서 소프트웨어 업데이트 무결성 검증에 사용할 해시 함수의 성능을 비교했습니다.',
       '제한된 차량 임베디드 환경을 고려해 해시 함수별 처리 특성과 적용 가능성을 정리했습니다.',

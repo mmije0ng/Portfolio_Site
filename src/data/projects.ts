@@ -65,7 +65,7 @@ export const projects: Project[] = [
   {
     slug: 'okmart-erp',
     title: '(주)오케이마트 ERP 연동 통합 관리 시스템',
-    category: ['Backend', 'Cloud'],
+    category: ['Backend'],
     type: '미래내일 일경험 프로젝트형',
     period: '2025년 8월 11일 → 2025년 10월 12일',
     role: '백엔드 (FastAPI)',
@@ -194,7 +194,7 @@ export const projects: Project[] = [
   {
     slug: 'web-phishing-detection',
     title: '머신러닝을 활용한 웹 피싱 탐지 서비스',
-    category: ['AI', 'Backend'],
+    category: ['AI', 'Backend', 'Cloud', 'Data'],
     type: '제20회 한성공학경진대회',
     period: '2024년 7월 5일 → 2024년 10월 1일',
     role: '머신러닝, 백엔드(Flask), 인프라 설계, 프론트&백 CI/CD, 팀장',
@@ -313,7 +313,7 @@ export const projects: Project[] = [
   {
     slug: 'moneybook',
     title: 'MoneyBook',
-    category: 'Mobile',
+    category: ['Mobile', 'FullStack'],
     type: '고급모바일프로그래밍',
     period: '2024년 9월 23일 → 2024년 12월 6일',
     role: '프론트엔드 (React Native)',

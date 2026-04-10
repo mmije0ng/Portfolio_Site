@@ -12,8 +12,8 @@ type ProjectsPageProps = {
 const projectTabs = [
   { label: 'All', value: 'all' },
   { label: 'Backend', value: 'Backend' },
-  { label: 'FullStack', value: 'FullStack' },
   { label: 'Frontend', value: 'Frontend' },
+  { label: 'FullStack', value: 'FullStack' },
   { label: 'Cloud', value: 'Cloud' },
   { label: 'Mobile', value: 'Mobile' },
   { label: 'Security', value: 'Security' },
