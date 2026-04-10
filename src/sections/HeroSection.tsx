@@ -21,18 +21,17 @@ function renderFocusIcon(label: string) {
 
 export function HeroSection({ onNavigate }: HeroSectionProps) {
   const cvLink = links.find((link) => link.label === 'CV')?.href
+  const educationHeadline = profile.education.split('\n')[0]
 
   return (
     <section className="border-b border-slate-800 bg-slate-950">
-      <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_260px] lg:items-center lg:py-24">
+      <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_260px] lg:items-start lg:py-24">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-900 px-3 py-2 text-sm font-semibold text-sky-300">
             <Sparkles className="h-4 w-4" />
             {profile.role}
           </div>
-          <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-white sm:text-6xl">
-            {profile.tagline}
-          </h1>
+          <h1 className="mt-6 whitespace-pre-line text-2xl font-bold leading-tight tracking-tight text-white sm:text-4xl">{profile.tagline}</h1>
           <div className="mt-6 flex max-w-3xl flex-wrap gap-2">
             {profileKeywords.map((keyword) => (
               <span className="rounded-md bg-slate-900 px-3 py-1.5 text-sm font-medium text-slate-300 ring-1 ring-slate-800" key={keyword}>
@@ -98,21 +97,8 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
               </article>
             ))}
           </div>
-        </div>
 
-        <aside className="grid w-full max-w-[220px] gap-4 justify-self-start lg:justify-self-end">
-          <div className="rounded-lg border border-slate-800 bg-slate-900 p-3 shadow-2xl shadow-slate-950/40">
-            <img
-              alt={`${profile.name} 프로필 사진`}
-              className="aspect-[3/4] w-full rounded-md object-cover object-top"
-              src={profilePhoto}
-            />
-            <div className="p-3">
-              <p className="text-base font-semibold text-white">{profile.name}</p>
-              <p className="mt-2 text-xs leading-5 text-slate-400">{profile.education}</p>
-            </div>
-          </div>
-          <dl className="grid gap-3">
+          <dl className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
             {heroStats.map((stat) => (
               <div className="rounded-lg border border-slate-800 bg-slate-900 p-4" key={stat.label}>
                 <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{stat.label}</dt>
@@ -120,6 +106,25 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
               </div>
             ))}
           </dl>
+        </div>
+
+        <aside className="grid w-full max-w-[220px] gap-4 justify-self-start lg:self-end lg:justify-self-end">
+          <div className="rounded-lg border border-slate-800 bg-slate-900 p-3 shadow-2xl shadow-slate-950/40">
+            <img alt={`${profile.name} 프로필 사진`} className="aspect-[3/4] w-full rounded-md object-cover object-top" src={profilePhoto} />
+            <div className="p-3">
+              <p className="text-base font-semibold text-white">{profile.name}</p>
+              <dl className="mt-3 grid gap-2 text-xs leading-5 text-slate-400">
+                <div>
+                  <dt className="font-semibold uppercase tracking-[0.14em] text-slate-500">Birth</dt>
+                  <dd className="mt-1">{profile.birthDate}</dd>
+                </div>
+                <div>
+                  <dt className="font-semibold uppercase tracking-[0.14em] text-slate-500">Education</dt>
+                  <dd className="mt-1">{educationHeadline}</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
         </aside>
       </div>
     </section>

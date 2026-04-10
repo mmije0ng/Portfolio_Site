@@ -6,11 +6,11 @@ export const profile: Profile = {
   birthDate: '2004.01.08',
   phone: '010-5501-0589',
   email: 'arsvita0116@gmail.com',
-  education: '한성대학교 컴퓨터공학부 (모바일소프트웨어·웹공학 트랙) 2022.03 - 2026.08 졸업 예정',
+  education: '한성대학교 컴퓨터공학부(모바일소프트웨어, 웹공학)\n2022.03 - 2026.08 (졸업예정)',
   gpa: '4.1 / 4.5',
   github: 'https://github.com/mmije0ng',
   linkedin: 'https://www.linkedin.com/in/park-mijeong',
-  tagline: '트래픽, 인프라, 보안 연구까지 제품을 끝까지 책임지는 백엔드 개발자',
+  tagline: '트래픽, 인프라, 보안 연구까지\n다양한 분야에 기여하는 백엔드 개발자',
   summary: [
     'IT 연합 동아리에서 1년간 활동하며 Spring Boot 기반 백엔드 개발과 AWS, Docker 기반의 인프라 구축 및 CI/CD 운영을 담당했습니다. RabbitMQ 기반의 메시지 유실 없는 안정적인 아키텍처를 설계한 경험이 있습니다.',
     '특히 대규모 트래픽 처리에 관심을 가져 부하 테스트를 수행했으며, 쿼리 최적화·커넥션 풀 및 스레드 튜닝·Redis 캐시를 단계적으로 적용해 응답 지연 시간을 62% 단축하고 시스템 처리 용량을 2.8배 확장한 경험이 있습니다.',
