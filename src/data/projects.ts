@@ -71,7 +71,7 @@ export const projects: Project[] = [
     role: '백엔드 (FastAPI)',
     description: '(주)오케이마트의 쇼핑몰 ERP 자동화 연동 통합 관리 시스템',
     impact: '프로젝트형 인턴으로 참여, 사내 배포 완료 후 직원 실사용 중',
-    stack: ['Eccount', 'FastAPI', 'MinIO', 'Python', '사방넷', 'n8n'],
+    stack: ['Eccount', 'FastAPI', 'MinIO', 'Python', '사방넷', 'n8n', 'Jenkins'],
     overview: [
       '오케이마트 사내 쇼핑몰 ERP 연동 업무를 자동화하기 위한 통합 관리 시스템입니다.',
       '사방넷·Ecount 연동과 상품 데이터 추출 흐름을 백엔드에서 처리했습니다.',
@@ -100,9 +100,10 @@ export const projects: Project[] = [
         // 부하테스트 & 모니터링
         'k6', 'Prometheus', 'Grafana', 
         // 백엔드 & 인프라
-        'JAVA', 'SpringBoot', 'QueryDSL', 'JWT', 'Nginx', 'RabbitMQ', 'STOMP', 'WebSocket', 
+        'JAVA', 'SpringBoot', 'RabbitMQ', 'STOMP', 'WebSocket', 
         // 클라우드 & 컨테이너
-        'AWS', 'Docker',  'SpringBoot',
+        'AWS', 'Docker', 'Github Actions',
+        'QueryDSL', 'JWT', 'Nginx',
         // 데이터베이스
         'MySQL', 'Redis',
         'React', 'JavaSCript', 'CoolSMS'
@@ -141,18 +142,18 @@ export const projects: Project[] = [
     description: '함께 소비를 관리하는 SNS형 소비 관리 가계부 웹앱 서비스',
     impact: 'DB 유니크 제약과 비관적 락으로 소비 루틴 동시성 이슈 해결',
     stack: [
+      'SpringBoot',
+      'JAVA',
+      'Redis',
+      'Pessimistic Lock',
       'AWS',
       'Docker',
       'Github Actions',
       'Bastion Host',
-      'SpringBoot',
-      'JAVA',
-      'JWT',
-      'MySQL',
-      '비관적 락',
       'QueryDSL',
       'Nginx',
-      'Redis',
+      'JWT',
+      'MySQL',
       'OAuth2.0',
       'SendGrid',
       'React','TypeScript'
@@ -195,7 +196,7 @@ export const projects: Project[] = [
     slug: 'web-phishing-detection',
     title: '머신러닝을 활용한 웹 피싱 탐지 서비스',
     category: ['AI', 'Backend', 'Cloud', 'Data'],
-    type: '제20회 한성공학경진대회',
+    type: '제 20회 한성공학경진대회',
     period: '2024년 7월 5일 → 2024년 10월 1일',
     role: '머신러닝, 백엔드(Flask), 인프라 설계, 프론트&백 CI/CD, 팀장',
     description: '머신러닝 모델 기반 사이트 URL 피싱 여부 판단 서비스',
@@ -222,7 +223,7 @@ export const projects: Project[] = [
     role: '풀스택 (iOS, 백엔드)',
     description: '공공데이터 기반 지역 범죄 통계&경찰서 조회 iOS 애플리케이션',
     impact: '공공데이터 적재와 통계 처리 성능 개선',
-    stack: ['Swift', 'SwiftUI',  'SpringBoot', 'JAVA', 'JWT', 'MySQL', 'OAuth2.0', 'QueryDSL', '공공데이터'],
+    stack: ['Swift', 'SwiftUI', 'JAVA', 'SpringBoot', 'Redis', 'JWT', 'MySQL', 'OAuth2.0', 'QueryDSL', '공공데이터'],
     overview: ['지역 범죄 통계와 경찰서 위치 정보를 조회할 수 있는 iOS 애플리케이션입니다.', 'Spring Boot 백엔드와 SwiftUI iOS 앱을 개인 프로젝트로 구현했습니다.'],
     contributions: ['공공데이터 수집·적재 및 범죄 통계 산출 로직 구현', 'Spring Boot API와 SwiftUI iOS 클라이언트 개발', 'OAuth2.0, JWT, QueryDSL 조회 로직 구성'],
     problemSolving: [
@@ -247,7 +248,7 @@ export const projects: Project[] = [
     role: '풀스택',
     description: '야구 팬을 위한 커뮤니티 및 에스크로 티켓 양도 플랫폼',
     impact: '실시간 채팅, 에스크로 기반 티켓 거래 흐름을 통합 구현',
-    stack: ['JAVA', 'SpringBoot', 'React', 'Vite', 'JWT', 'MySQL', 'QueryDSL', 'WebSocket', 'STOMP', 'SockJS', 'GSAP', 'H2', 'Thymeleaf'],
+    stack: ['JAVA', 'SpringBoot', 'JWT', 'MySQL', 'QueryDSL', 'WebSocket', 'STOMP', 'STOMPJS', 'SockJS', 'H2', 'Swagger', 'React', 'Vite', 'JavaScript', 'Vanlia CSS', 'GSAP', 'Thymeleaf'],    
     overview: ['같은 팀을 응원하는 팬들이 경기 일정에 맞춰 직관 메이트와 크루를 모집하고 안전하게 티켓을 양도할 수 있도록 설계한 플랫폼입니다.', 'KBO 경기 정보, 실시간 채팅, 에스크로 거래, 관리자 페이지를 하나의 서비스 흐름으로 연결했습니다.'],
     contributions: ['에스크로 기반 티켓 양도 프로세스와 상태 관리 구현', 'JWT·Spring Security 기반 인증/인가 체계 구축', '직관 메이트 모집 게시판과 그룹 채팅, 1:1 채팅 연결', '가상 포인트 충전 기능과 React Context 기반 잔액 UI 반영', 'Thymeleaf 기반 관리자 대시보드 및 운영 정책 기능 구현', 'Git Flow와 SpringDoc OpenAPI 기반 협업 및 문서화 주도'],
     problemSolving: [
@@ -297,7 +298,7 @@ export const projects: Project[] = [
     role: '백엔드 (SpringBoot)',
     description: '대학 캠퍼스 내 기부 및 중고 거래 서비스',
     impact: 'Redis 검색, JWT 인증, 대학 순위 스케줄링, 실시간 채팅 구현',
-    stack: ['AWS', 'JAVA', 'SpringBoot', 'JWT', 'MySQL', 'Redis', 'STOMP', 'WebSocket', 'React', 'TypeScript'],
+    stack: ['JAVA', 'SpringBoot', 'JWT', 'MySQL', 'Redis', 'STOMP', 'WebSocket', 'AWS', 'React', 'TypeScript'],
     overview: ['재학생 인증을 통해 같은 대학 사용자 간 안전한 거래를 지원하는 중고 거래 및 기부 플랫폼입니다.', '환경 점수와 대학별 랭킹 시스템으로 사용자 참여를 유도했습니다.'],
     contributions: ['대학 이메일 인증 및 JWT 기반 인증·인가 구현', 'Refresh Token Redis 저장 구조 적용', '환경 점수 기반 대학 랭킹 스케줄링 구현', 'WebSocket, STOMP 기반 1:1 실시간 채팅 구축'],
     problemSolving: [
