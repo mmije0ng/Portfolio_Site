@@ -254,7 +254,7 @@ export const projects: Project[] = [
     title: 'AI 템플릿 메이커',
     category: 'AI',
     description: '생성형 AI 광고 이미지를 템플릿으로 편집하고 뿌리오 문자 발송으로 연결하는 웹 서비스',
-    impact: '한성SW중심대학 페스티벌 우수상, DALL·E-3 이미지 생성 속도 약 8배 개선',
+    impact: '한성SW중심대학 페스티벌 우수상, DALL·E-3 이미지 생성 속도 약 5 개선',
     stack: ['DALL·E 3', 'Async Processing', 'External API', 'Web'],
     link: {
       label: 'Project',

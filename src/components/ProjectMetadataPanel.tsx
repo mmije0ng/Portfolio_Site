@@ -3,6 +3,8 @@ import { PillList } from './PillList'
 
 type ProjectMetadataPanelProps = {
   markdown: string
+  fallbackHighlights?: string[]
+  overrideLinks?: { label: string; href: string }[]
 }
 
 type Metadata = {
@@ -14,6 +16,79 @@ type Metadata = {
   role?: string
   period?: string
   links: { label: string; href: string }[]
+}
+
+function normalizeKey(key: string) {
+  return key.replace(/\s+/g, '').toLowerCase()
+}
+
+function isProjectTypeKey(key: string) {
+  const normalized = normalizeKey(key)
+  return normalized.includes('프로젝트유형') || normalized.includes('?꾨줈?앺듃?좏삎')
+}
+
+function isProjectDescriptionKey(key: string) {
+  const normalized = normalizeKey(key)
+  return normalized.includes('프로젝트설명') || normalized.includes('?꾨줈?앺듃?ㅻ챸')
+}
+
+function isStackKey(key: string) {
+  const normalized = normalizeKey(key)
+  return normalized.includes('사용기술') || normalized.includes('?ъ슜湲곗닠')
+}
+
+function isRoleKey(key: string) {
+  const normalized = normalizeKey(key)
+  return normalized.includes('담당역할') || normalized.includes('?대떦??븷')
+}
+
+function isPeriodKey(key: string) {
+  const normalized = normalizeKey(key)
+  return normalized.includes('작업기간') || normalized.includes('?묒뾽湲곌컙')
+}
+
+function isLinkKey(key: string) {
+  const normalized = normalizeKey(key)
+  return (
+    normalized.includes('github링크') ||
+    normalized.includes('논문링크') ||
+    key.includes('GitHub') ||
+    key.includes('논문') ||
+    key.includes('留곹겕') ||
+    key.includes('?쇰Ц')
+  )
+}
+
+function getFallbackLinkLabel(key: string) {
+  return key.includes('논문') || key.includes('?쇰Ц') ? '논문 정보' : 'GitHub'
+}
+
+function normalizeLinkLabel(sectionKey: string, label: string) {
+  const base = getFallbackLinkLabel(sectionKey)
+  if (label === base || label.startsWith(`${base} `)) return label
+  return `${base} ${label}`.trim()
+}
+
+function parseGroupedLinks(key: string, value: string) {
+  const links: { label: string; href: string }[] = []
+  const parts = value.split(/(?=\S+:\s*https?:\/\/|https?:\/\/)/).map((item) => item.trim()).filter(Boolean)
+
+  parts.forEach((part, index) => {
+    const labeledMatch = part.match(/^(.+?):\s*(https?:\/\/\S+)$/)
+    const directMatch = part.match(/^(https?:\/\/\S+)$/)
+
+    if (labeledMatch) {
+      links.push({ label: normalizeLinkLabel(key, labeledMatch[1].trim()), href: labeledMatch[2] })
+      return
+    }
+
+    if (directMatch) {
+      const fallback = getFallbackLinkLabel(key)
+      links.push({ label: index === 0 ? fallback : `${fallback} ${index + 1}`, href: directMatch[1] })
+    }
+  })
+
+  return links
 }
 
 function parseMetadata(markdown: string): Metadata {
@@ -30,11 +105,14 @@ function parseMetadata(markdown: string): Metadata {
     links: [],
   }
 
+  let activeLinkKey: string | null = null
+
   metadataLines.forEach((line) => {
     if (line.startsWith('#')) return
 
     const separatorIndex = line.indexOf(':')
     if (separatorIndex === -1) {
+      activeLinkKey = null
       metadata.highlights.push(line)
       return
     }
@@ -44,35 +122,56 @@ function parseMetadata(markdown: string): Metadata {
 
     if (!value) return
 
-    if (key === '프로젝트 유형' || key.includes('프로젝트') && key.includes('유형')) metadata.type = value
-    else if (key === '프로젝트 설명' || key.includes('프로젝트') && key.includes('설명')) metadata.description = value
-    else if (key === '사용 기술' || key.includes('사용') && key.includes('기술')) metadata.stack = value.split(',').map((item) => item.trim()).filter(Boolean)
-    else if (key === '담당 역할' || key.includes('담당') && key.includes('역할')) metadata.role = value
-    else if (key === '작업기간' || key.includes('작업') && key.includes('기간')) metadata.period = value
-    else if (key === 'GitHub 링크' || key === '논문 링크' || key.includes('GitHub') || key.includes('논문')) {
-      const links = value.split(/(?=\S+:\s*https?:\/\/|https?:\/\/)/).map((item) => item.trim()).filter(Boolean)
-
-      links.forEach((linkText, index) => {
-        const labeledMatch = linkText.match(/^(.+?):\s*(https?:\/\/\S+)$/)
-        const directMatch = linkText.match(/^(https?:\/\/\S+)$/)
-
-        if (labeledMatch) {
-          metadata.links.push({ label: labeledMatch[1], href: labeledMatch[2] })
-        } else if (directMatch) {
-          const fallbackLabel = key.includes('논문') ? '논문 정보' : 'GitHub'
-          metadata.links.push({ label: index === 0 ? fallbackLabel : `${fallbackLabel} ${index + 1}`, href: directMatch[1] })
-        }
-      })
-    } else {
-      metadata.highlights.push(line)
+    if (isProjectTypeKey(key)) {
+      activeLinkKey = null
+      metadata.type = value
+      return
     }
+
+    if (isProjectDescriptionKey(key)) {
+      activeLinkKey = null
+      metadata.description = value
+      return
+    }
+
+    if (isStackKey(key)) {
+      activeLinkKey = null
+      metadata.stack = value.split(',').map((item) => item.trim()).filter(Boolean)
+      return
+    }
+
+    if (isRoleKey(key)) {
+      activeLinkKey = null
+      metadata.role = value
+      return
+    }
+
+    if (isPeriodKey(key)) {
+      activeLinkKey = null
+      metadata.period = value
+      return
+    }
+
+    if (isLinkKey(key)) {
+      activeLinkKey = key
+      metadata.links.push(...parseGroupedLinks(key, value))
+      return
+    }
+
+    if (activeLinkKey && /^https?:\/\/\S+$/.test(value)) {
+      metadata.links.push({ label: normalizeLinkLabel(activeLinkKey, key), href: value })
+      return
+    }
+
+    activeLinkKey = null
+    metadata.highlights.push(line)
   })
 
-  metadata.highlights = metadata.highlights.filter((highlight) => !/레포지토리:\s*https?:\/\//.test(highlight))
+  metadata.highlights = metadata.highlights.filter((highlight) => !highlight.includes('http://') && !highlight.includes('https://'))
 
   if (markdown.includes('FarmON')) {
     const farmonLoadTestHighlight =
-      'N+1 쿼리 제거와 조회 로직 최적화, 커넥션 풀·WAS 설정 최적화를 거친 뒤 Redis 캐시를 도입해\np(95) 지연 시간 62% 단축, 평균 처리량 182% 향상\n, Peak RPS 221% 향상, 총 처리 요청 수 2.8배 확장'
+      'N+1 쿼리 제거와 조회 로직 최적화, 커넥션 풀·WAS 설정 최적화를 거친 뒤 Redis 캐시를 도입해 p(95) 지연 시간 62% 단축, 평균 처리량 182% 향상, Peak RPS 221% 향상, 총 처리 요청 수 2.8배 확장'
 
     metadata.highlights = metadata.highlights.filter((highlight) => highlight !== farmonLoadTestHighlight)
     metadata.highlights.unshift(farmonLoadTestHighlight)
@@ -81,9 +180,11 @@ function parseMetadata(markdown: string): Metadata {
   return metadata
 }
 
-export function ProjectMetadataPanel({ markdown }: ProjectMetadataPanelProps) {
+export function ProjectMetadataPanel({ markdown, fallbackHighlights = [], overrideLinks }: ProjectMetadataPanelProps) {
   const metadata = parseMetadata(markdown)
-  const isResearch = markdown.includes('논문 링크:') || markdown.includes('?쇰Ц')
+  const highlights = metadata.highlights.length ? metadata.highlights : fallbackHighlights.filter(Boolean)
+  const links = overrideLinks?.length ? overrideLinks : metadata.links
+  const isResearch = markdown.includes('논문 링크:') || markdown.includes('?쇰Ц 留곹겕:')
 
   return (
     <section className="mb-8 min-w-0 rounded-lg border border-slate-800 bg-slate-900 p-6 sm:p-8">
@@ -124,14 +225,14 @@ export function ProjectMetadataPanel({ markdown }: ProjectMetadataPanelProps) {
         ) : null}
       </div>
 
-      {metadata.highlights.length ? (
+      {highlights.length ? (
         <div className="mt-6 min-w-0 rounded-lg bg-slate-950 p-4">
           <p className="flex items-center gap-2 text-sm font-semibold text-slate-400">
             <Trophy className="h-4 w-4" />
             주요 성과
           </p>
           <ul className="mt-3 grid min-w-0 gap-2 text-sm leading-7 text-teal-200 md:grid-cols-2">
-            {metadata.highlights.map((highlight) => (
+            {highlights.map((highlight) => (
               <li className="min-w-0 [overflow-wrap:break-word]" key={highlight}>
                 {highlight}
               </li>
@@ -150,9 +251,9 @@ export function ProjectMetadataPanel({ markdown }: ProjectMetadataPanelProps) {
         </div>
       ) : null}
 
-      {metadata.links.length ? (
+      {links.length ? (
         <div className="mt-6 flex flex-wrap gap-3">
-          {metadata.links.map((link) => (
+          {links.map((link) => (
             <a
               className="inline-flex items-center gap-2 rounded-lg bg-sky-400 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-sky-300"
               href={link.href}

@@ -3,8 +3,11 @@
 프로젝트 유형: 개인프로젝트
 프로젝트 설명: 지역 범죄 통계&경찰서 조회 iOS 애플리케이션
 사용 기술: Swift, SwiftUI, JAVA, SpringBoot, Redis, JWT, MySQL, OAuth2.0, QueryDSL, 공공데이터
+공공데이터 적재와 통계 처리 성능 개선
+풀스택 (iOS, SpringBoot) 개발 능력 향상
 담당 역할: 풀스택 (iOS, SpringBoot)
 작업기간: 2025년 6월 11일 → 2025년 6월 22일
+
 GitHub 링크: SpringBoot: https://github.com/mmije0ng/FindCrime-SpringBoot
 iOS: https://github.com/mmije0ng/FindCrime-iOS
 

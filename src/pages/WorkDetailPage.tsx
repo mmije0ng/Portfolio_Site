@@ -32,7 +32,7 @@ export function WorkDetailPage({ item, eyebrow, backLabel, backPath, onNavigate 
             {backLabel}
           </button>
 
-          <ProjectMetadataPanel markdown={projectDocument} />
+          <ProjectMetadataPanel markdown={projectDocument} fallbackHighlights={[item.impact]} overrideLinks={links} />
 
           <article className="rounded-lg border border-slate-800 bg-slate-900 p-6 sm:p-8">
             <MarkdownDocument assetBasePath={documentPath} markdown={projectDocument} skipMetadata />

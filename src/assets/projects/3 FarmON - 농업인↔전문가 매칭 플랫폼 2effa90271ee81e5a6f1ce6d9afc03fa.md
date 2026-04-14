@@ -232,5 +232,7 @@ Prometheus와 Grafana를 통해 주요 성능 지표를 모니터링하며 **시
 
 프로젝트 링크
 
-- GitHub: [https://github.com/mmije0ng/FarmON_BE_LoadTesting](https://github.com/mmije0ng/FarmON_BE_LoadTesting)
+- GitHub: 
+ - 부하테스트: [https://github.com/mmije0ng/FarmON_BE_LoadTesting](https://github.com/mmije0ng/FarmON_BE_LoadTesting)
+ - 개발: [https://github.com/Farm-On/BE](https://github.com/Farm-On/BE)
 - 배포 링크: [https://farm-on.netlify.app/](https://farm-on.netlify.app/) *(서버 비용으로 인해 현재 서비스 중단)*
