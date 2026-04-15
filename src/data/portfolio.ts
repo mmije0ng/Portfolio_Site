@@ -2,7 +2,7 @@ import type { Profile, Project, SimpleItem, SkillGroup, TimelineItem } from '../
 
 export const profile: Profile = {
   name: '박미정',
-  role: 'Backend Developer · Mobility Security Researcher  · Cloud Infra Engineer',
+  role: 'Backend Developer · Full Stack Developer  · Cloud Infra Engineer · Mobility Security Researcher',
   birthDate: '2004.01.08',
   phone: '010-5501-0589',
   email: 'arsvita0116@gmail.com',
@@ -15,7 +15,7 @@ export const profile: Profile = {
     'IT 연합 동아리에서 1년간 활동하며 Spring Boot 기반 백엔드 개발과 AWS, Docker 기반의 인프라 구축 및 CI/CD 운영을 담당했습니다. RabbitMQ 기반의 메시지 유실 없는 안정적인 아키텍처를 설계한 경험이 있습니다.',
     '특히 대규모 트래픽 처리에 관심을 가져 부하 테스트를 수행했으며, 쿼리 최적화·커넥션 풀 및 스레드 튜닝·Redis 캐시를 단계적으로 적용해 응답 지연 시간을 62% 단축하고 시스템 처리 용량을 2.8배 확장한 경험이 있습니다.',
     '아울러 모빌리티 사이버보안 연구실에서 학부연구생으로 활동하며, SDV 환경의 암호·블록체인 연구 및 현대자동차와의 산학협력프로젝트, LLM/VLM 연계 자율주행 R&D 과제를 수행해 연구 역량을 넓혔습니다.',
-    '다양한 분야에 기여할 수 있는, 시야가 넓은 개발자를 목표로 하고 있습니다.',
+    '모든 경험에는 배움이 있다고 생각합니다. 다양한 분야에 기여할 수 있는, 시야가 넓은 개발자를 목표로 하고 있습니다.',
   ],
   quote: 'Done is better than perfect.\n일단 하는 것, 해내는 것 자체가 중요하다.',
 }
@@ -58,7 +58,7 @@ export const experiences: TimelineItem[] = [
     ],
   },
   {
-    title: '(주)오케이마트 프로젝트형 인턴\n백엔드 개발자',
+    title: '(주)오케이마트 프로젝트형 인턴 백엔드 개발자',
     period: '2025.08.11 - 2025.10.12',
     category: 'Internship',
     description: '사내 쇼핑몰 ERP 시스템 백엔드 개발',

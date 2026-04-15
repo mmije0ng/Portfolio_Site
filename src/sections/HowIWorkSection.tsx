@@ -4,12 +4,12 @@ import { workPrinciples } from '../data/portfolio'
 
 const icons = [Compass, ShieldCheck, GitBranch, Users, Layers3, Handshake]
 const accentStyles = [
-  'bg-sky-400/10 text-sky-300',
-  'bg-teal-400/10 text-teal-300',
-  'bg-amber-400/10 text-amber-300',
-  'bg-rose-400/10 text-rose-300',
-  'bg-violet-400/10 text-violet-300',
-  'bg-emerald-400/10 text-emerald-300',
+  'bg-sky-100 text-sky-700',
+  'bg-violet-100 text-violet-700',
+  'bg-indigo-100 text-indigo-700',
+  'bg-cyan-100 text-cyan-700',
+  'bg-purple-100 text-purple-700',
+  'bg-blue-100 text-blue-700',
 ]
 
 export function HowIWorkSection() {
@@ -27,14 +27,14 @@ export function HowIWorkSection() {
 
           return (
             <article
-              className="rounded-lg border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-slate-700"
+              className="rounded-lg border border-sky-200/80 bg-gradient-to-br from-sky-50/74 via-white/38 to-indigo-50/64 p-6 shadow-sm shadow-sky-100/60 transition hover:-translate-y-1 hover:border-sky-300 backdrop-blur-sm"
               key={principle.title}
             >
               <div className={`flex h-12 w-12 items-center justify-center rounded-lg ${accentStyle}`}>
                 <Icon className="h-6 w-6" />
               </div>
-              <h3 className="mt-5 text-lg font-semibold text-white">{principle.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-slate-400">{principle.description}</p>
+              <h3 className="mt-5 text-lg font-semibold text-slate-800">{principle.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{principle.description}</p>
             </article>
           )
         })}

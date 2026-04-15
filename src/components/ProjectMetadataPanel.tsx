@@ -187,51 +187,51 @@ export function ProjectMetadataPanel({ markdown, fallbackHighlights = [], overri
   const isResearch = markdown.includes('논문 링크:') || markdown.includes('?쇰Ц 留곹겕:')
 
   return (
-    <section className="mb-8 min-w-0 rounded-lg border border-slate-800 bg-slate-900 p-6 sm:p-8">
-      <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.24em] text-sky-300">
+    <section className="mb-8 min-w-0 rounded-lg border border-sky-200 bg-white/90 p-6 shadow-sm shadow-sky-100/60 sm:p-8">
+      <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.24em] text-sky-700">
         <FolderKanban className="h-4 w-4" />
         {isResearch ? 'Research Paper' : 'Project'}
       </p>
-      {metadata.title ? <h1 className="mt-4 min-w-0 text-4xl font-bold tracking-tight text-white [overflow-wrap:break-word] sm:text-5xl">{metadata.title}</h1> : null}
-      {metadata.description ? <p className="mt-5 min-w-0 text-base leading-8 text-slate-300 [overflow-wrap:break-word]">{metadata.description}</p> : null}
+      {metadata.title ? <h1 className="mt-4 min-w-0 text-4xl font-bold tracking-tight text-slate-800 [overflow-wrap:break-word] sm:text-5xl">{metadata.title}</h1> : null}
+      {metadata.description ? <p className="mt-5 min-w-0 text-base leading-8 text-slate-700 [overflow-wrap:break-word]">{metadata.description}</p> : null}
 
       <div className="mt-6 grid gap-4 md:grid-cols-2">
         {metadata.type ? (
-          <div className="min-w-0 rounded-lg bg-slate-950 p-4">
+          <div className="min-w-0 rounded-lg bg-sky-50 p-4">
             <p className="flex items-center gap-2 text-sm font-semibold text-slate-400">
               <Sparkles className="h-4 w-4" />
               {isResearch ? '논문 유형' : '프로젝트 유형'}
             </p>
-            <p className="mt-2 min-w-0 text-sm leading-7 text-white [overflow-wrap:break-word]">{metadata.type}</p>
+            <p className="mt-2 min-w-0 text-sm leading-7 text-slate-800 [overflow-wrap:break-word]">{metadata.type}</p>
           </div>
         ) : null}
         {metadata.period ? (
-          <div className="min-w-0 rounded-lg bg-slate-950 p-4">
+          <div className="min-w-0 rounded-lg bg-sky-50 p-4">
             <p className="flex items-center gap-2 text-sm font-semibold text-slate-400">
               <CalendarDays className="h-4 w-4" />
               작업기간
             </p>
-            <p className="mt-2 min-w-0 text-sm leading-7 text-white [overflow-wrap:break-word]">{metadata.period}</p>
+            <p className="mt-2 min-w-0 text-sm leading-7 text-slate-800 [overflow-wrap:break-word]">{metadata.period}</p>
           </div>
         ) : null}
         {metadata.role ? (
-          <div className="min-w-0 rounded-lg bg-slate-950 p-4 md:col-span-2">
+          <div className="min-w-0 rounded-lg bg-sky-50 p-4 md:col-span-2">
             <p className="flex items-center gap-2 text-sm font-semibold text-slate-400">
               <UserRound className="h-4 w-4" />
               담당 역할
             </p>
-            <p className="mt-2 min-w-0 text-sm leading-7 text-white [overflow-wrap:break-word]">{metadata.role}</p>
+            <p className="mt-2 min-w-0 text-sm leading-7 text-slate-800 [overflow-wrap:break-word]">{metadata.role}</p>
           </div>
         ) : null}
       </div>
 
       {highlights.length ? (
-        <div className="mt-6 min-w-0 rounded-lg bg-slate-950 p-4">
+        <div className="mt-6 min-w-0 rounded-lg bg-sky-50 p-4">
           <p className="flex items-center gap-2 text-sm font-semibold text-slate-400">
             <Trophy className="h-4 w-4" />
             주요 성과
           </p>
-          <ul className="mt-3 grid min-w-0 gap-2 text-sm leading-7 text-teal-200 md:grid-cols-2">
+          <ul className="mt-3 grid min-w-0 gap-2 text-sm leading-7 text-violet-700 md:grid-cols-2">
             {highlights.map((highlight) => (
               <li className="min-w-0 [overflow-wrap:break-word]" key={highlight}>
                 {highlight}
@@ -255,7 +255,7 @@ export function ProjectMetadataPanel({ markdown, fallbackHighlights = [], overri
         <div className="mt-6 flex flex-wrap gap-3">
           {links.map((link) => (
             <a
-              className="inline-flex items-center gap-2 rounded-lg bg-sky-400 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-sky-300"
+              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-sky-500 to-violet-500 px-4 py-2 text-sm font-semibold text-white transition hover:brightness-105"
               href={link.href}
               key={`${link.label}-${link.href}`}
               rel="noreferrer"

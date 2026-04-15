@@ -3,6 +3,24 @@ import { SectionHeading } from '../components/SectionHeading'
 import { experiences } from '../data/portfolio'
 import type { Link } from '../types/portfolio'
 
+const completionLinksByProject: Record<string, Link> = {
+  '/projects/money-touch': {
+    label: '수료증 보기',
+    href: 'https://www.kolleges.net/ko/neordinary/achievement/8909?utm_source=linkedin',
+  },
+  '/projects/farmon': {
+    label: '수료증 보기',
+    href: 'https://www.kolleges.net/ko/neordinary/achievement/2340?utm_source=linkedin',
+  },
+}
+
+function formatPeriodLabel(period: string) {
+  return period
+    .replace(/\s+/g, ' ')
+    .trim()
+    .replace(/\s*(?:->|→|=>|~)\s*/g, ' - ')
+}
+
 function getIcon(category: string) {
   if (category.includes('Research')) return FlaskConical
   if (category.includes('Competition')) return Trophy
@@ -19,7 +37,7 @@ function ExperienceLink({ link, onNavigate }: { link: Link; onNavigate: (path: s
   if (isInternal) {
     return (
       <button
-        className="inline-flex items-center gap-1 text-sm font-semibold text-sky-300 transition hover:text-sky-200"
+        className="inline-flex items-center gap-1 text-sm font-semibold text-sky-700 transition hover:text-violet-700"
         onClick={() => onNavigate(link.href)}
         type="button"
       >
@@ -31,7 +49,7 @@ function ExperienceLink({ link, onNavigate }: { link: Link; onNavigate: (path: s
 
   return (
     <a
-      className="inline-flex items-center gap-1 text-sm font-semibold text-sky-300 transition hover:text-sky-200"
+      className="inline-flex items-center gap-1 text-sm font-semibold text-sky-700 transition hover:text-violet-700"
       href={link.href}
       rel="noreferrer"
       target="_blank"
@@ -50,59 +68,67 @@ export function ExperienceSection({ onNavigate }: ExperienceSectionProps) {
         title="실사용, 성능 개선, 연구 과제까지 이어진 경험"
         description="프로젝트형 인턴, 모빌리티 보안 학부연구생, 백엔드 리드 등 주요 경험을 시간 흐름에 따라 정리했습니다."
       />
-      <div className="relative grid gap-5 lg:grid-cols-2">
-        <div className="absolute left-4 top-0 hidden h-full w-px bg-slate-800 lg:block" />
+      <ol className="grid gap-4">
         {experiences.map((experience, index) => {
           const Icon = getIcon(experience.category)
-          const accentClass = index % 3 === 0 ? 'bg-sky-400 text-slate-950' : index % 3 === 1 ? 'bg-slate-800 text-sky-300' : 'bg-slate-800 text-teal-300'
-          const links = experience.links ?? (experience.link ? [experience.link] : [])
+          const accentClass =
+            index % 3 === 0 ? 'bg-sky-500 text-white' : index % 3 === 1 ? 'bg-violet-100 text-violet-700' : 'bg-sky-100 text-sky-700'
+          const baseLinks = experience.links ?? (experience.link ? [experience.link] : [])
+          const completionLink = experience.link ? completionLinksByProject[experience.link.href] : undefined
+          const links = completionLink ? [...baseLinks, completionLink] : baseLinks
 
           return (
-            <article
-              className="relative rounded-lg border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-slate-700"
+            <li
+              className="group animate-[fadeUp_0.6s_ease-out_both] rounded-xl border border-sky-100/80 bg-gradient-to-br from-sky-50/74 via-white/38 to-indigo-50/62 px-5 shadow-sm shadow-sky-100/40 transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_18px_40px_rgba(14,165,233,0.12)] backdrop-blur-sm"
               key={experience.title}
+              style={{ animationDelay: `${index * 90}ms` }}
             >
-              <div className="flex items-start gap-4">
-                <div className="flex shrink-0 flex-col items-center gap-2">
-                  <span className="text-xs font-black tracking-[0.18em] text-slate-500">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <div className={`flex h-12 w-12 items-center justify-center rounded-lg ${accentClass}`}>
+              <article className="grid gap-4 py-6 transition sm:py-7 md:grid-cols-[180px_1fr] md:gap-8">
+                <div className="flex items-start justify-between gap-4 md:block">
+                  <div className="min-w-0">
+                    <p className="min-w-0 text-sm font-semibold text-slate-800 [overflow-wrap:anywhere]">
+                      {formatPeriodLabel(experience.period)}
+                    </p>
+                    <p className="mt-2 inline-flex rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold text-sky-700">
+                      {experience.category}
+                    </p>
+                  </div>
+                  <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg ${accentClass} transition duration-300 group-hover:scale-105 md:mt-1`}>
                     <Icon className="h-6 w-6" />
                   </div>
                 </div>
-                <div>
-                  <div className="flex flex-wrap items-center gap-2">
-                    <p className="rounded-full bg-slate-800 px-3 py-1 text-xs font-semibold text-sky-300">
-                      {experience.category}
-                    </p>
-                    <p className="rounded-full bg-slate-950 px-3 py-1 text-xs font-semibold text-slate-400">
-                      {experience.period}
-                    </p>
+
+                <div className="min-w-0">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="text-xs font-black tracking-[0.18em] text-slate-400">{String(index + 1).padStart(2, '0')}</span>
+                    <h3 className="min-w-0 whitespace-pre-line text-lg font-semibold text-slate-800 [overflow-wrap:anywhere] transition duration-300 group-hover:text-sky-800 sm:text-xl">
+                      {experience.title}
+                    </h3>
                   </div>
-                  <h3 className="mt-3 whitespace-pre-line text-xl font-semibold text-white">{experience.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-700">{experience.description}</p>
+
+                  <ul className="mt-4 grid gap-2 text-sm leading-6 text-slate-700">
+                    {experience.bullets.map((bullet) => (
+                      <li className="flex gap-2" key={bullet}>
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400" />
+                        <span className="min-w-0 [overflow-wrap:anywhere]">{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {links.length ? (
+                    <div className="mt-5 flex flex-wrap gap-3">
+                      {links.map((link) => (
+                        <ExperienceLink key={`${link.label}-${link.href}`} link={link} onNavigate={onNavigate} />
+                      ))}
+                    </div>
+                  ) : null}
                 </div>
-              </div>
-              <p className="mt-4 text-base leading-7 text-slate-300">{experience.description}</p>
-              <ul className="mt-4 grid gap-2 text-sm leading-6 text-slate-400">
-                {experience.bullets.map((bullet) => (
-                  <li className="flex gap-2" key={bullet}>
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-300" />
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-              {links.length ? (
-                <div className="mt-5 flex flex-wrap gap-3">
-                  {links.map((link) => (
-                    <ExperienceLink key={`${link.label}-${link.href}`} link={link} onNavigate={onNavigate} />
-                  ))}
-                </div>
-              ) : null}
-            </article>
+              </article>
+            </li>
           )
         })}
-      </div>
+      </ol>
     </section>
   )
 }

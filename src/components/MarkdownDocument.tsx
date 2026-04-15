@@ -100,7 +100,7 @@ function renderInline(text: string, assetBasePath?: string) {
 
     nodes.push(
       <a
-        className="inline max-w-full break-words text-sky-300 [overflow-wrap:anywhere] hover:text-sky-200"
+        className="inline max-w-full break-words text-sky-700 [overflow-wrap:anywhere] hover:text-violet-700"
         download={downloadFileName}
         href={href}
         key={`${href}-${match.index}`}
@@ -356,10 +356,10 @@ export function MarkdownDocument({ markdown, skipMetadata = false, assetBasePath
           const HeadingTag = block.level === 1 ? 'h2' : block.level === 2 ? 'h3' : 'h4'
           const className =
             block.level === 1
-              ? 'min-w-0 pt-4 text-3xl font-bold tracking-tight text-white [overflow-wrap:break-word]'
+              ? 'min-w-0 pt-4 text-3xl font-bold tracking-tight text-slate-800 [overflow-wrap:break-word]'
               : block.level === 2
-                ? 'min-w-0 pt-3 text-2xl font-semibold text-white [overflow-wrap:break-word]'
-                : 'min-w-0 pt-2 text-xl font-semibold text-teal-200 [overflow-wrap:break-word]'
+                ? 'min-w-0 pt-3 text-2xl font-semibold text-slate-800 [overflow-wrap:break-word]'
+                : 'min-w-0 pt-2 text-xl font-semibold text-violet-700 [overflow-wrap:break-word]'
 
           return (
             <HeadingTag className={className} key={`${block.text}-${index}`}>
@@ -370,7 +370,7 @@ export function MarkdownDocument({ markdown, skipMetadata = false, assetBasePath
 
         if (block.type === 'image') {
           return (
-            <figure className="min-w-0 overflow-hidden rounded-lg border border-slate-800 bg-slate-950" key={`${block.src}-${index}`}>
+            <figure className="min-w-0 overflow-hidden rounded-lg border border-sky-200 bg-sky-50" key={`${block.src}-${index}`}>
               <img alt={block.alt || '프로젝트 이미지'} className="h-auto max-h-[780px] w-full object-contain" loading="lazy" src={block.src} />
             </figure>
           )
@@ -378,13 +378,13 @@ export function MarkdownDocument({ markdown, skipMetadata = false, assetBasePath
 
         if (block.type === 'code') {
           return (
-            <div className="min-w-0 overflow-hidden rounded-lg border border-slate-800 bg-slate-950" key={`code-${index}`}>
+            <div className="min-w-0 overflow-hidden rounded-lg border border-sky-200 bg-sky-50" key={`code-${index}`}>
               {block.language ? (
-                <div className="border-b border-slate-800 bg-slate-900 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+                <div className="border-b border-sky-200 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                   {block.language}
                 </div>
               ) : null}
-              <pre className="min-w-0 overflow-x-auto p-4 text-sm leading-7 text-slate-200">
+              <pre className="min-w-0 overflow-x-auto p-4 text-sm leading-7 text-slate-700">
                 <code className="font-mono whitespace-pre">{block.code}</code>
               </pre>
             </div>
@@ -396,14 +396,14 @@ export function MarkdownDocument({ markdown, skipMetadata = false, assetBasePath
 
           return (
             <ListTag
-              className={block.ordered ? 'min-w-0 list-decimal space-y-2 pl-6 text-sm leading-7 text-slate-300' : 'min-w-0 list-disc space-y-2 pl-6 text-sm leading-7 text-slate-300'}
+              className={block.ordered ? 'min-w-0 list-decimal space-y-2 pl-6 text-sm leading-7 text-slate-700' : 'min-w-0 list-disc space-y-2 pl-6 text-sm leading-7 text-slate-700'}
               key={`list-${index}`}
             >
               {block.items.map((item) => (
-                <li className="min-w-0 rounded-lg bg-slate-950 px-4 py-3 [overflow-wrap:break-word]" key={item.text}>
+                <li className="min-w-0 rounded-lg bg-sky-50 px-4 py-3 [overflow-wrap:break-word]" key={item.text}>
                   <span className="whitespace-pre-line">{renderInline(item.text, assetBasePath)}</span>
                   {item.children.length ? (
-                    <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-400">
+                    <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-600">
                       {item.children.map((child) => (
                         <li className="min-w-0 [overflow-wrap:break-word]" key={child}>
                           {renderInline(child, assetBasePath)}
@@ -421,18 +421,18 @@ export function MarkdownDocument({ markdown, skipMetadata = false, assetBasePath
           const [head, ...rows] = block.rows
 
           return (
-            <div className="min-w-0 overflow-x-auto rounded-lg border border-slate-800" key={`table-${index}`}>
+            <div className="min-w-0 overflow-x-auto rounded-lg border border-sky-200" key={`table-${index}`}>
               <table className="w-full min-w-[560px] border-collapse text-left text-sm">
-                <thead className="bg-slate-950 text-slate-200">
+                <thead className="bg-sky-50 text-slate-700">
                   <tr>
                     {head.map((cell) => (
-                      <th className="border-b border-slate-800 px-4 py-3 font-semibold leading-6 [overflow-wrap:break-word]" key={cell}>
+                      <th className="border-b border-sky-200 px-4 py-3 font-semibold leading-6 [overflow-wrap:break-word]" key={cell}>
                         {cell}
                       </th>
                     ))}
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800 text-slate-300">
+                <tbody className="divide-y divide-sky-200 text-slate-700">
                   {rows.map((row) => (
                     <tr key={row.join('-')}>
                       {row.map((cell) => (
@@ -450,18 +450,18 @@ export function MarkdownDocument({ markdown, skipMetadata = false, assetBasePath
 
         if (block.type === 'quote') {
           return (
-            <blockquote className="min-w-0 rounded-lg border border-slate-800 bg-slate-950 p-5 text-sm font-medium leading-7 text-sky-200 [overflow-wrap:break-word]" key={`quote-${index}`}>
+            <blockquote className="min-w-0 rounded-lg border border-sky-200 bg-sky-50 p-5 text-sm font-medium leading-7 text-violet-700 [overflow-wrap:break-word]" key={`quote-${index}`}>
               {renderInline(block.text, assetBasePath)}
             </blockquote>
           )
         }
 
         if (block.type === 'rule') {
-          return <hr className="border-slate-800" key={`rule-${index}`} />
+          return <hr className="border-sky-200" key={`rule-${index}`} />
         }
 
         return (
-          <p className="min-w-0 whitespace-pre-line text-sm leading-8 text-slate-300 [overflow-wrap:break-word]" key={`${block.text}-${index}`}>
+          <p className="min-w-0 whitespace-pre-line text-sm leading-8 text-slate-700 [overflow-wrap:break-word]" key={`${block.text}-${index}`}>
             {renderInline(block.text, assetBasePath)}
           </p>
         )

@@ -9,23 +9,23 @@ type ResearchPageProps = {
 
 export function ResearchPage({ onNavigate }: ResearchPageProps) {
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100">
+    <main className="min-h-screen bg-gradient-to-b from-sky-50 via-indigo-50 to-violet-50 text-slate-800">
       <section className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8">
         <button
-          className="mb-8 inline-flex items-center gap-2 rounded-lg border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-slate-500"
+          className="mb-8 inline-flex items-center gap-2 rounded-lg border border-sky-300 bg-white/80 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-sky-400"
           onClick={() => onNavigate('/')}
           type="button"
         >
           <ArrowLeft className="h-4 w-4" />
           Home
         </button>
-        <div className="rounded-lg border border-slate-800 bg-slate-900 p-6">
-          <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.24em] text-teal-300">
+        <div className="rounded-lg border border-sky-200 bg-white/90 p-6 shadow-sm shadow-sky-100/60">
+          <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.24em] text-violet-700">
             <BookOpenCheck className="h-4 w-4" />
             Research Paper
           </p>
-          <h1 className="mt-3 text-4xl font-bold tracking-tight text-white sm:text-5xl">논문 목록</h1>
-          <p className="mt-5 max-w-3xl text-base leading-8 text-slate-400">
+          <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-800 sm:text-5xl">논문 목록</h1>
+          <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600">
             투고 논문을 중심으로 구성했습니다.
             <br />
             각 논문 카드를 클릭하면 연구 배경, 목표, 실험 결과를 확인할 수 있습니다.
@@ -33,12 +33,12 @@ export function ResearchPage({ onNavigate }: ResearchPageProps) {
         </div>
 
         <Tabs.Root className="mt-10" defaultValue="papers">
-          <Tabs.List className="flex flex-wrap gap-2 rounded-lg border border-slate-800 bg-slate-900 p-2">
-            <Tabs.Trigger className="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-slate-400 transition data-[state=active]:bg-teal-300 data-[state=active]:text-slate-950" value="papers">
+          <Tabs.List className="flex flex-wrap gap-2 rounded-lg border border-sky-200 bg-white/90 p-2">
+            <Tabs.Trigger className="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-sky-50 data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-indigo-500 data-[state=active]:text-white" value="papers">
               <FileText className="h-4 w-4" />
               Papers
             </Tabs.Trigger>
-            <Tabs.Trigger className="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-slate-400 transition data-[state=active]:bg-teal-300 data-[state=active]:text-slate-950" value="security">
+            <Tabs.Trigger className="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-sky-50 data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-indigo-500 data-[state=active]:text-white" value="security">
               <ShieldCheck className="h-4 w-4" />
               Security Focus
             </Tabs.Trigger>
