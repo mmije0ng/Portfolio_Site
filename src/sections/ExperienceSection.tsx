@@ -1,6 +1,8 @@
 import { ArrowUpRight, BriefcaseBusiness, FlaskConical, Trophy } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import { SectionHeading } from '../components/SectionHeading'
 import { experiences } from '../data/portfolio'
+import { cn } from '../lib/cn'
 import type { Link } from '../types/portfolio'
 
 const completionLinksByProject: Record<string, Link> = {
@@ -78,57 +80,108 @@ export function ExperienceSection({ onNavigate }: ExperienceSectionProps) {
           const links = completionLink ? [...baseLinks, completionLink] : baseLinks
 
           return (
-            <li
-              className="group animate-[fadeUp_0.6s_ease-out_both] rounded-xl border border-sky-100/80 bg-gradient-to-br from-sky-50/74 via-white/38 to-indigo-50/62 px-5 shadow-sm shadow-sky-100/40 transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_18px_40px_rgba(14,165,233,0.12)] backdrop-blur-sm"
+            <ExperienceItem
+              accentClass={accentClass}
+              experience={experience}
               key={experience.title}
-              style={{ animationDelay: `${index * 90}ms` }}
-            >
-              <article className="grid gap-4 py-6 transition sm:py-7 md:grid-cols-[180px_1fr] md:gap-8">
-                <div className="flex items-start justify-between gap-4 md:block">
-                  <div className="min-w-0">
-                    <p className="min-w-0 text-sm font-semibold text-slate-800 [overflow-wrap:anywhere]">
-                      {formatPeriodLabel(experience.period)}
-                    </p>
-                    <p className="mt-2 inline-flex rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold text-sky-700">
-                      {experience.category}
-                    </p>
-                  </div>
-                  <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg ${accentClass} transition duration-300 group-hover:scale-105 md:mt-1`}>
-                    <Icon className="h-6 w-6" />
-                  </div>
-                </div>
-
-                <div className="min-w-0">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="text-xs font-black tracking-[0.18em] text-slate-400">{String(index + 1).padStart(2, '0')}</span>
-                    <h3 className="min-w-0 whitespace-pre-line text-lg font-semibold text-slate-800 [overflow-wrap:anywhere] transition duration-300 group-hover:text-sky-800 sm:text-xl">
-                      {experience.title}
-                    </h3>
-                  </div>
-                  <p className="mt-3 text-sm leading-7 text-slate-700">{experience.description}</p>
-
-                  <ul className="mt-4 grid gap-2 text-sm leading-6 text-slate-700">
-                    {experience.bullets.map((bullet) => (
-                      <li className="flex gap-2" key={bullet}>
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400" />
-                        <span className="min-w-0 [overflow-wrap:anywhere]">{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {links.length ? (
-                    <div className="mt-5 flex flex-wrap gap-3">
-                      {links.map((link) => (
-                        <ExperienceLink key={`${link.label}-${link.href}`} link={link} onNavigate={onNavigate} />
-                      ))}
-                    </div>
-                  ) : null}
-                </div>
-              </article>
-            </li>
+              index={index}
+              links={links}
+              onNavigate={onNavigate}
+            />
           )
         })}
       </ol>
     </section>
+  )
+}
+
+type ExperienceItemProps = {
+  accentClass: string
+  experience: (typeof experiences)[number]
+  index: number
+  links: Link[]
+  onNavigate: (path: string) => void
+}
+
+function ExperienceItem({ accentClass, experience, index, links, onNavigate }: ExperienceItemProps) {
+  const itemRef = useRef<HTMLLIElement | null>(null)
+  const [hasAnimated, setHasAnimated] = useState(false)
+  const Icon = getIcon(experience.category)
+
+  useEffect(() => {
+    const item = itemRef.current
+
+    if (!item || hasAnimated) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) return
+
+        setHasAnimated(true)
+        observer.disconnect()
+      },
+      {
+        threshold: 0.45,
+        rootMargin: '0px 0px -12% 0px',
+      },
+    )
+
+    observer.observe(item)
+
+    return () => observer.disconnect()
+  }, [hasAnimated])
+
+  return (
+    <li
+      className={cn(
+        'group rounded-xl border border-sky-100/80 bg-gradient-to-br from-sky-50/74 via-white/38 to-indigo-50/62 px-5 shadow-sm shadow-sky-100/40 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_18px_40px_rgba(14,165,233,0.12)]',
+        hasAnimated ? 'animate-[fadeUp_0.38s_ease-out_both]' : 'translate-y-8 opacity-0',
+      )}
+      ref={itemRef}
+      style={{ animationDelay: `${index * 90}ms` }}
+    >
+      <article className="grid gap-4 py-6 transition sm:py-7 md:grid-cols-[180px_1fr] md:gap-8">
+        <div className="flex items-start justify-between gap-4 md:block">
+          <div className="min-w-0">
+            <p className="min-w-0 text-sm font-semibold text-slate-800 [overflow-wrap:anywhere]">
+              {formatPeriodLabel(experience.period)}
+            </p>
+            <p className="mt-2 inline-flex rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold text-sky-700">
+              {experience.category}
+            </p>
+          </div>
+          <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg ${accentClass} transition duration-300 group-hover:scale-105 md:mt-1`}>
+            <Icon className="h-6 w-6" />
+          </div>
+        </div>
+
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="text-xs font-black tracking-[0.18em] text-slate-400">{String(index + 1).padStart(2, '0')}</span>
+            <h3 className="min-w-0 whitespace-pre-line text-lg font-semibold text-slate-800 [overflow-wrap:anywhere] transition duration-300 group-hover:text-sky-800 sm:text-xl">
+              {experience.title}
+            </h3>
+          </div>
+          <p className="mt-3 text-sm leading-7 text-slate-700">{experience.description}</p>
+
+          <ul className="mt-4 grid gap-2 text-sm leading-6 text-slate-700">
+            {experience.bullets.map((bullet) => (
+              <li className="flex gap-2" key={bullet}>
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400" />
+                <span className="min-w-0 [overflow-wrap:anywhere]">{bullet}</span>
+              </li>
+            ))}
+          </ul>
+
+          {links.length ? (
+            <div className="mt-5 flex flex-wrap gap-3">
+              {links.map((link) => (
+                <ExperienceLink key={`${link.label}-${link.href}`} link={link} onNavigate={onNavigate} />
+              ))}
+            </div>
+          ) : null}
+        </div>
+      </article>
+    </li>
   )
 }
