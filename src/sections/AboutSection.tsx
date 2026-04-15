@@ -23,7 +23,6 @@ const profileFacts = [
 export function AboutSection() {
   const titleRef = useRef<HTMLSpanElement | null>(null)
   const [titleAnimated, setTitleAnimated] = useState(false)
-  const [titleAnimationDone, setTitleAnimationDone] = useState(false)
   const [typingWidth, setTypingWidth] = useState('0px')
 
   useLayoutEffect(() => {
@@ -67,11 +66,8 @@ export function AboutSection() {
         <h2 className="mt-3 text-[2rem] font-black tracking-tight sm:text-[2.6rem]">
           <span
             aria-label="Backend Engineer Across Product, Infra, and Security"
-            className={`profile-title-gradient ${
-              titleAnimationDone ? 'profile-title-static' : titleAnimated ? 'profile-title-typing-once' : 'profile-title-hidden'
-            }`}
+            className={`profile-title-gradient ${titleAnimated ? 'profile-title-typing-once' : 'profile-title-hidden'}`}
             data-text="Backend Engineer Across Product, Infra, and Security"
-            onAnimationEnd={() => setTitleAnimationDone(true)}
             ref={titleRef}
             style={{ ['--typing-width' as string]: typingWidth }}
           >
