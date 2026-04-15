@@ -72,7 +72,6 @@ export function ExperienceSection({ onNavigate }: ExperienceSectionProps) {
       />
       <ol className="grid gap-4">
         {experiences.map((experience, index) => {
-          const Icon = getIcon(experience.category)
           const accentClass =
             index % 3 === 0 ? 'bg-sky-500 text-white' : index % 3 === 1 ? 'bg-violet-100 text-violet-700' : 'bg-sky-100 text-sky-700'
           const baseLinks = experience.links ?? (experience.link ? [experience.link] : [])
