@@ -56,7 +56,7 @@ function App() {
 
       return project ? (
         <WorkDetailPage
-          backLabel="프로젝트 목록으로 돌아가기"
+          backLabel="프로젝트 목록"
           backPath="/projects"
           eyebrow="Project Detail"
           item={project}
@@ -73,7 +73,7 @@ function App() {
 
       return paper ? (
         <WorkDetailPage
-          backLabel="논문 목록으로 돌아가기"
+          backLabel="논문 목록"
           backPath="/research"
           eyebrow="Research Detail"
           item={paper}

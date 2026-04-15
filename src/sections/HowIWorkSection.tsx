@@ -17,7 +17,7 @@ export function HowIWorkSection() {
     <section className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8" id="how-i-work">
       <SectionHeading
         eyebrow="How I Work"
-        title="문제를 푸는 방식과 협업의 기준"
+        title="협업의 기준과 문제를 해결하는 방식"
         description="기술 선택부터 설계, 커뮤니케이션, 팀워크까지 일할 때 꾸준히 지키려는 기준들입니다."
       />
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">

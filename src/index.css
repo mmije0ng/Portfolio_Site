@@ -47,7 +47,7 @@ a {
   }
 
   100% {
-    width: 100%;
+    width: var(--typing-width);
   }
 }
 
@@ -74,8 +74,8 @@ a {
 
 .profile-title-typing-once {
   display: inline-block;
-  width: fit-content;
-  max-width: 100%;
+  width: 0;
+  max-width: var(--typing-width);
   overflow: hidden;
   white-space: nowrap;
   vertical-align: bottom;
@@ -83,6 +83,16 @@ a {
   animation:
     typingReveal 1.8s steps(54, end) both,
     caretBlink 0.8s step-end 3;
+}
+
+.profile-title-static {
+  display: inline-block;
+  width: auto;
+  max-width: none;
+  overflow: visible;
+  white-space: nowrap;
+  vertical-align: bottom;
+  border-right: 0;
 }
 
 .profile-title-gradient {

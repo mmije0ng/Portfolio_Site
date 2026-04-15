@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { ContactRound, GraduationCap, Quote, UserRound } from 'lucide-react'
 import { profile } from '../data/portfolio'
 
@@ -23,6 +23,22 @@ const profileFacts = [
 export function AboutSection() {
   const titleRef = useRef<HTMLSpanElement | null>(null)
   const [titleAnimated, setTitleAnimated] = useState(false)
+  const [titleAnimationDone, setTitleAnimationDone] = useState(false)
+  const [typingWidth, setTypingWidth] = useState('0px')
+
+  useLayoutEffect(() => {
+    const node = titleRef.current
+    if (!node) return
+
+    const updateTypingWidth = () => {
+      setTypingWidth(`${Math.ceil(node.scrollWidth) + 12}px`)
+    }
+
+    updateTypingWidth()
+    window.addEventListener('resize', updateTypingWidth)
+
+    return () => window.removeEventListener('resize', updateTypingWidth)
+  }, [])
 
   useEffect(() => {
     const node = titleRef.current
@@ -45,15 +61,19 @@ export function AboutSection() {
   return (
     <section className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8" id="about">
       <div className="mb-8 max-w-4xl">
-        <p className="animate-[fadeUp_0.55s_ease-out_both] text-xs font-semibold uppercase tracking-[0.22em] text-sky-600">
+        <p className="animate-[fadeUp_0.55s_ease-out_both] text-sm font-semibold uppercase tracking-[0.22em] text-sky-600 sm:text-base">
           Profile
         </p>
-        <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
+        <h2 className="mt-3 text-[2rem] font-black tracking-tight sm:text-[2.6rem]">
           <span
             aria-label="Backend Engineer Across Product, Infra, and Security"
-            className={`profile-title-gradient ${titleAnimated ? 'profile-title-typing-once' : 'profile-title-hidden'}`}
+            className={`profile-title-gradient ${
+              titleAnimationDone ? 'profile-title-static' : titleAnimated ? 'profile-title-typing-once' : 'profile-title-hidden'
+            }`}
             data-text="Backend Engineer Across Product, Infra, and Security"
+            onAnimationEnd={() => setTitleAnimationDone(true)}
             ref={titleRef}
+            style={{ ['--typing-width' as string]: typingWidth }}
           >
             Backend Engineer Across Product, Infra, and Security
           </span>
