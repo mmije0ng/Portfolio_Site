@@ -81,7 +81,7 @@ a {
   vertical-align: bottom;
   border-right: 3px solid rgba(99, 102, 241, 0.9);
   animation:
-    typingReveal 1.8s steps(54, end) both,
+    typingReveal 2.8s steps(54, end) both,
     caretBlink 0.8s step-end 3;
 }
 
