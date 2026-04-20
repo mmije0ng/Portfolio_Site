@@ -26,7 +26,7 @@ export function ResearchPage({ onNavigate }: ResearchPageProps) {
           </p>
           <h1 className="mt-3 text-2xl font-bold tracking-tight text-slate-800 sm:text-3xl">논문 목록</h1>
           <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600">
-            게재 및 투고 논문을 중심으로 구성했습니다.
+            모빌리티·보안 연구실에서 학부연구생으로 활동하며 투고한 논문을 구성했습니다.
             <br />
             각 논문 카드를 클릭하면 연구 배경, 목표, 실험 결과를 확인할 수 있습니다.
           </p>

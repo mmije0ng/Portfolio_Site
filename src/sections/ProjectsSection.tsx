@@ -18,7 +18,7 @@ type ProjectCardProps = {
 const categoryStyles = {
   Backend: 'bg-sky-100 text-sky-700',
   FullStack: 'bg-violet-100 text-violet-700',
-  Cloud: 'bg-indigo-100 text-indigo-700',
+  'DevOps · Cloud': 'bg-indigo-100 text-indigo-700',
   Security: 'bg-cyan-100 text-cyan-700',
   Research: 'bg-purple-100 text-purple-700',
   AI: 'bg-fuchsia-100 text-fuchsia-700',
@@ -44,7 +44,7 @@ function getCategoryLabel(project: Project) {
 
 function renderProjectIcon(category?: string) {
   if (category === 'AI') return <Bot className="h-6 w-6" />
-  if (category === 'Cloud') return <Cpu className="h-6 w-6" />
+  if (category === 'DevOps · Cloud') return <Cpu className="h-6 w-6" />
   if (category === 'Security' || category === 'Research') return <ShieldCheck className="h-6 w-6" />
   if (category === 'Automotive' || category === 'Data') return <Cpu className="h-6 w-6" />
   if (category === 'FullStack') return <Layers className="h-6 w-6" />
@@ -160,7 +160,7 @@ export function ProjectsSection({ onNavigate }: ProjectsSectionProps) {
         <SectionHeading
           eyebrow="Featured Work"
           title="대표 프로젝트와 연구"
-          description="성과가 큰 프로젝트와 주요 연구를 한눈에 볼 수 있도록 정리했습니다."
+          description="문제 해결의 경험과 성과가 집약된 주요 프로젝트 및 투고 논문을 한눈에 볼 수 있도록 정리했습니다."
         />
       </div>
       <div className="grid gap-4 md:grid-cols-2">

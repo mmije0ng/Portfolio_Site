@@ -14,7 +14,7 @@ const projectTabs = [
   { label: 'Backend', value: 'Backend' },
   { label: 'Frontend', value: 'Frontend' },
   { label: 'FullStack', value: 'FullStack' },
-  { label: 'Cloud', value: 'Cloud' },
+  { label: 'DevOps · Cloud', value: 'DevOps · Cloud' },
   { label: 'Mobile', value: 'Mobile' },
   { label: 'Security', value: 'Security' },
   { label: 'AI', value: 'AI' },
@@ -46,7 +46,7 @@ export function ProjectsPage({ onNavigate }: ProjectsPageProps) {
             </p>
             <h1 className="mt-3 text-2xl font-bold tracking-tight text-slate-800 sm:text-3xl">프로젝트 목록</h1>
             <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600">
-              주요 프로젝트를 중심으로 구성했습니다.
+              백엔드, 풀스택, 인프라, 보안 등 주요 프로젝트를 중심으로 구성했습니다.
               <br />
               각 프로젝트 카드를 클릭하면 개요, 구현 기여, 문제 해결 과정을 확인할 수 있습니다.
             </p>

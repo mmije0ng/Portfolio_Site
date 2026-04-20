@@ -90,7 +90,7 @@ export const projects: Project[] = [
   {
     slug: 'farmon',
     title: 'FarmON - 농업인↔전문가 매칭 플랫폼',
-    category: ['Backend', 'Cloud'],
+    category: ['Backend', 'DevOps · Cloud'],
     type: 'IT 연합 동아리 UMC 7기',
     period: '2025년 1월 5일 → 2025년 2월 21일',
     role: '백엔드 팀장, SpringBoot, 서버 인프라 설계, CI/CD',
@@ -138,7 +138,7 @@ export const projects: Project[] = [
   {
     slug: 'money-touch',
     title: '돈터치 - SNS형 소비 관리 웹앱 서비스',
-    category: ['Backend', 'Cloud'],
+    category: ['Backend', 'DevOps · Cloud'],
     type: 'IT 연합 동아리 UMC 8기',
     period: '2025년 6월 26일 → 2025년 8월 22일',
     role: '백엔드 팀장, SpringBoot, 서버 인프라 설계, CI/CD',
@@ -198,7 +198,7 @@ export const projects: Project[] = [
   {
     slug: 'web-phishing-detection',
     title: '머신러닝을 활용한 웹 피싱 탐지 서비스',
-    category: ['AI', 'Backend', 'Cloud', 'Data'],
+    category: ['AI', 'Backend', 'DevOps · Cloud', 'Data'],
     type: '제 20회 한성공학경진대회',
     period: '2024년 7월 5일 → 2024년 10월 1일',
     role: '머신러닝, 백엔드(Flask), 인프라 설계, 프론트&백 CI/CD, 팀장',

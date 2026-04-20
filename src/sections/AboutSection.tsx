@@ -75,7 +75,7 @@ export function AboutSection() {
           </span>
         </h2>
         <p className="mt-4 animate-[fadeUp_0.85s_ease-out_both] text-sm leading-7 text-slate-600">
-          서비스 개발, 인프라 운영, 성능 개선, 보안 연구 경험을 하나의 흐름으로 연결해 문제를 해결해왔습니다.
+          풀스택 서비스 개발, 인프라 운영, 성능 개선, 보안 연구 등 한 분야에만 국한되지 않고, 다양한 분야를 경험하며 문제를 해결해왔습니다.
         </p>
       </div>
       <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
