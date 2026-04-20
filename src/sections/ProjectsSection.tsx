@@ -166,7 +166,6 @@ export function ProjectsSection({ onNavigate }: ProjectsSectionProps) {
       <div className="grid gap-4 md:grid-cols-2">
         {featuredProjects.map((project, index) => (
           <ProjectCard
-            compact
             featured={index === 0}
             key={project.title}
             number={index + 1}
