@@ -73,15 +73,14 @@ export const experiences: TimelineItem[] = [
     },
   },
   {
-    title: '캡스톤디자인·2025 오픈소스 개발자대회',
+    title: '2025 오픈소스 개발자대회',
     period: '2025.02 - 2025.10',
     category: 'Project · Competition',
     description: 'IoT 기기의 안전한 소프트웨어 업데이트를 위한 블록체인 기반 분산형 OTA 업데이트 플랫폼 개발',
     bullets: [
       '블록체인으로 업데이트 기록의 위·변조를 방지하는 구조 설계',
       '스마트 컨트랙트로 업데이트 배포와 결제를 원자적으로 처리',
-      '취약점 스캔, 라이선스 충돌 검사, 의존성 충돌 분석으로 공개 품질과 보안성 확보',
-      '캡스톤 우수상 수상 (2등)'
+      '취약점 스캔, 라이선스 충돌 검사, 의존성 충돌 분석으로 오픈소스 공개 품질과 보안성 확보',
     ],
     link: {
       label: 'OTA Platform',
@@ -89,7 +88,7 @@ export const experiences: TimelineItem[] = [
     },
   },
   {
-    title: 'UMC 8th Server SpringBoot 시니어코스',
+    title: 'UMC 8th Server SpringBoot 시니어코스 (전국 대학생 IT 연합동아리)',
     period: '2025.03.14 - 2025.08.23',
     category: 'Backend Lead',
     description: 'SNS형 소비 관리 웹앱 돈터치 개발',
@@ -111,7 +110,7 @@ export const experiences: TimelineItem[] = [
     bullets: [
       '현대자동차 연구원과 산학협력 프로젝트 수행',
       'LLM, NLU, STT/TTS, MCP, 화자 인식을 융합한 자율주행 음성 명령 구조 연구',
-      'OTA 음성 업데이트 기능을 연동해 주행 중 안전성과 사용자 편의성을 함께 고려',
+      'OTA 음성 업데이트 및 음성 자율주행 기능을 연동해 주행 중 안전성과 사용자 편의성을 함께 고려',
     ],
     link: {
       label: 'OTA Platform',
@@ -133,7 +132,7 @@ export const experiences: TimelineItem[] = [
     ],
   },
   {
-    title: 'UMC 7th Server SpringBoot',
+    title: 'UMC 7th Server SpringBoot (전국 대학생 IT 연합동아리)',
     period: '2024.09.16 - 2025.02.21',
     category: 'Backend Lead',
     description: '농업인과 농업 전문가를 연결하는 매칭 플랫폼 FarmON 개발',
@@ -148,10 +147,10 @@ export const experiences: TimelineItem[] = [
     },
   },
   {
-    title: '2024 한성SW중심대학 페스티벌',
+    title: '2024 한성SW중심대학 페스티벌 (다우기술 기업연계)',
     period: '2024.09 - 2025.11',
     category: 'Competition',
-    description: '다우기술 기업연계 AI 템플릿 메이커 개발',
+    description: 'AI 템플릿 메이커 개발',
     bullets: [
       '생성형 AI로 제작한 광고 이미지를 템플릿으로 꾸미고 문자 발송 서비스 뿌리오와 연동',
       'DALL·E-3 기반 비동기 이미지 생성 로직 최적화로 이미지 생성 속도 약 8배 개선',
@@ -178,7 +177,7 @@ export const experiences: TimelineItem[] = [
     },
   },
   {
-    title: '구름톤 유니브 2기 백엔드',
+    title: '구름톤 유니브 2기 백엔드 (kakao·goorm 주관)',
     period: '2024.02 - 2024.07',
     category: 'Backend',
     description: '대학생을 위한 기부&중고 거래 플랫폼 WEAR 개발',
