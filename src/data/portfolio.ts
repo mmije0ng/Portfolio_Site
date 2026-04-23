@@ -2,7 +2,7 @@ import type { Profile, Project, SimpleItem, SkillGroup, TimelineItem } from '../
 
 export const profile: Profile = {
   name: '박미정',
-  role: 'Backend Developer · Full Stack Developer  · Cloud Infra Engineer · Mobility Security Researcher',
+  role: 'Backend Engineer · Full Stack Developer  · Cloud Infra Engineer · Mobility Security Researcher',
   birthDate: '2004.01.08',
   phone: '010-5501-0589',
   email: 'arsvita0116@gmail.com',
