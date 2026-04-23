@@ -29,26 +29,7 @@ function getIcon(category: string) {
   return BriefcaseBusiness
 }
 
-type ExperienceSectionProps = {
-  onNavigate: (path: string) => void
-}
-
-function ExperienceLink({ link, onNavigate }: { link: Link; onNavigate: (path: string) => void }) {
-  const isInternal = link.href.startsWith('/')
-
-  if (isInternal) {
-    return (
-      <button
-        className="inline-flex items-center gap-1 text-sm font-semibold text-sky-700 transition hover:text-violet-700"
-        onClick={() => onNavigate(link.href)}
-        type="button"
-      >
-        {link.label}
-        <ArrowUpRight className="h-4 w-4" />
-      </button>
-    )
-  }
-
+function ExperienceLink({ link }: { link: Link }) {
   return (
     <a
       className="inline-flex items-center gap-1 text-sm font-semibold text-sky-700 transition hover:text-violet-700"
@@ -62,7 +43,7 @@ function ExperienceLink({ link, onNavigate }: { link: Link; onNavigate: (path: s
   )
 }
 
-export function ExperienceSection({ onNavigate }: ExperienceSectionProps) {
+export function ExperienceSection() {
   return (
     <section className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8" id="experience">
       <SectionHeading
@@ -85,7 +66,6 @@ export function ExperienceSection({ onNavigate }: ExperienceSectionProps) {
               key={experience.title}
               index={index}
               links={links}
-              onNavigate={onNavigate}
             />
           )
         })}
@@ -99,10 +79,9 @@ type ExperienceItemProps = {
   experience: (typeof experiences)[number]
   index: number
   links: Link[]
-  onNavigate: (path: string) => void
 }
 
-function ExperienceItem({ accentClass, experience, index, links, onNavigate }: ExperienceItemProps) {
+function ExperienceItem({ accentClass, experience, index, links }: ExperienceItemProps) {
   const itemRef = useRef<HTMLLIElement | null>(null)
   const [hasAnimated, setHasAnimated] = useState(false)
   const Icon = getIcon(experience.category)
@@ -175,7 +154,7 @@ function ExperienceItem({ accentClass, experience, index, links, onNavigate }: E
           {links.length ? (
             <div className="mt-5 flex flex-wrap gap-3">
               {links.map((link) => (
-                <ExperienceLink key={`${link.label}-${link.href}`} link={link} onNavigate={onNavigate} />
+                <ExperienceLink key={`${link.label}-${link.href}`} link={link} />
               ))}
             </div>
           ) : null}

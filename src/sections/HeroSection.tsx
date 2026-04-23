@@ -3,10 +3,6 @@ import profilePhoto from '../assets/박미정_이력서 사진.jpg'
 import { CVIcon, GitHubIcon, LinkedInIcon } from '../components/BrandIcons'
 import { heroStats, links, profile, profileKeywords } from '../data/portfolio'
 
-type HeroSectionProps = {
-  onNavigate: (path: string, hash?: string) => void
-}
-
 const focusItems = [
   { label: 'Backend', text: 'Spring Boot 기반 서비스 설계' },
   { label: 'Security', text: 'SDV·IoT 보안 연구 경험' },
@@ -19,7 +15,7 @@ function renderFocusIcon(label: string) {
   return <DatabaseZap className="h-5 w-5" />
 }
 
-export function HeroSection({ onNavigate }: HeroSectionProps) {
+export function HeroSection() {
   const cvLink = links.find((link) => link.label === 'CV')?.href
   const educationHeadline = profile.education.split('\n')[0]
   const roleLabel = 'Backend Engineer Across Product, Infra, and Security'
@@ -41,14 +37,15 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
             ))}
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
-            <button
+            <a
               className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-sky-500 to-violet-500 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-sky-200 transition hover:brightness-105"
-              onClick={() => onNavigate('/projects')}
-              type="button"
+              href="/projects"
+              rel="noreferrer"
+              target="_blank"
             >
               프로젝트 보기
               <ArrowRight className="h-4 w-4" />
-            </button>
+            </a>
             <a
               className="inline-flex items-center gap-2 rounded-lg border border-sky-200/80 bg-gradient-to-r from-sky-50/74 via-white/34 to-violet-50/68 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-sky-300 hover:text-sky-700 backdrop-blur-sm"
               href={`mailto:${profile.email}`}

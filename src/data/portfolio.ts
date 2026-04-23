@@ -80,6 +80,7 @@ export const experiences: TimelineItem[] = [
     bullets: [
       '블록체인으로 업데이트 기록의 위·변조를 방지하는 구조 설계',
       '스마트 컨트랙트로 업데이트 배포와 결제를 원자적으로 처리',
+      'CP-ABE(속성 기반 암호화), ECDSA 서명 등 암호 알고리즘&서명 기반 안전한 시스템',
       '취약점 스캔, 라이선스 충돌 검사, 의존성 충돌 분석으로 오픈소스 공개 품질과 보안성 확보',
     ],
     link: {
@@ -91,7 +92,7 @@ export const experiences: TimelineItem[] = [
     title: 'UMC 8th Server SpringBoot 시니어코스 (전국 대학생 IT 연합동아리)',
     period: '2025.03.14 - 2025.08.23',
     category: 'Backend Lead',
-    description: 'SNS형 소비 관리 웹앱 돈터치 개발',
+    description: 'SNS형 소비 관리 웹앱 서비스 돈터치 개발',
     bullets: [
       '백엔드 팀장으로 서비스 개발 참여',
       'DB 유니크 제약과 비관적 락으로 등록 횟수 제한 데이터의 동시성 이슈 해결',
@@ -121,7 +122,7 @@ export const experiences: TimelineItem[] = [
     title: '2025 한국자동차공학회 춘계학술대회',
     period: '2025.05.21 - 2025.05.23',
     category: 'Research Paper',
-    description: '한국자동차공학회 춘계학술대회 사이버보안 세션 논문 2편 투고 및 발표',
+    description: '한국자동차공학회 춘계학술대회 자동차 사이버보안 세션 논문 2편 투고',
     bullets: [
       '속성 만료와 속성 레벨 키 갱신을 활용한 CP-ABE 기반 IoT 소프트웨어 업데이트 보안 연구 투고',
       '자동차 ECU 환경의 소프트웨어 업데이트를 위한 해시 함수 성능 평가 연구 투고 (학부생 부분 우수발표 논문상)',
@@ -150,7 +151,7 @@ export const experiences: TimelineItem[] = [
     title: '2024 한성SW중심대학 페스티벌 (다우기술 기업연계)',
     period: '2024.09 - 2025.11',
     category: 'Competition',
-    description: 'AI 템플릿 메이커 개발',
+    description: '생성형 AI기반 광고 이미지 생성 및 문자 발송 서비스 AI 템플릿 메이커 개발',
     bullets: [
       '생성형 AI로 제작한 광고 이미지를 템플릿으로 꾸미고 문자 발송 서비스 뿌리오와 연동',
       'DALL·E-3 기반 비동기 이미지 생성 로직 최적화로 이미지 생성 속도 약 8배 개선',

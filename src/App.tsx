@@ -94,10 +94,10 @@ function App() {
 
     return (
       <main className="min-h-screen bg-gradient-to-b from-sky-50 via-indigo-50 to-violet-50 text-slate-800">
-        <HeroSection onNavigate={navigate} />
+        <HeroSection />
         <AboutSection />
-        <ExperienceSection onNavigate={navigate} />
-        <ProjectsSection onNavigate={navigate} />
+        <ExperienceSection />
+        <ProjectsSection />
         <CredentialsSection />
         <SkillsSection />
         <HowIWorkSection />
