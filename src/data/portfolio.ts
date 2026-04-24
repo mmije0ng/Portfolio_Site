@@ -410,7 +410,7 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    title: 'Security, Blockchain & AI',
+    title: 'Security & Blockchain, AI',
     items: [
       'Blockchain',
       'Web3',
@@ -424,7 +424,9 @@ export const skillGroups: SkillGroup[] = [
       'SVM',
       'MLP',
       'Random Forest',
-      'NumPy • Pandas'
+      'NumPy • Pandas',
+      'Pytorch',
+      'OpenCV',
     ],
   },
 ]
