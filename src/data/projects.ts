@@ -23,7 +23,7 @@ export const projects: Project[] = [
       'CP-ABE',
       'ECDSA',
       'AES-256',
-      'SHA-256',
+      'SHA3-256',
 
       // 3. AI 관련 (Artificial Intelligence)
       'LLM',
